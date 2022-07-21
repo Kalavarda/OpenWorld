@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>$(DotNetTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj" />
+  </ItemGroup>
+
+</Project>

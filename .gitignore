@@ -1,0 +1,9 @@
+/OpenWorld/bin
+/OpenWorld/obj
+/OpenWorld.Controls/bin
+/OpenWorld.Controls/obj
+/OpenWorld.Models/bin
+/OpenWorld.Models/obj
+/OpenWorld.Controls/*.user
+/OpenWorld/*.user
+/.vs

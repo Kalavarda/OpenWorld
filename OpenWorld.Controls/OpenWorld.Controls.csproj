@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Hero.png" />
+    <None Remove="Images\Spider.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj" />
+    <ProjectReference Include="..\OpenWorld.Models\OpenWorld.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Hero.png" />
+    <Resource Include="Images\Spider.png" />
+  </ItemGroup>
+
+</Project>

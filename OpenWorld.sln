@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld", "OpenWorld\OpenWorld.csproj", "{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld.Models", "OpenWorld.Models\OpenWorld.Models.csproj", "{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld.Controls", "OpenWorld.Controls\OpenWorld.Controls.csproj", "{1F50F4F0-730C-4529-AA62-066312180FC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F6B0FCDE-7302-45AD-99B1-80B40E07C21B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives", "Libs\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj", "{7717B093-1CC6-4A75-A27A-72D719D2F47E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.WPF", "Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj", "{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F50F4F0-730C-4529-AA62-066312180FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F50F4F0-730C-4529-AA62-066312180FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F50F4F0-730C-4529-AA62-066312180FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F50F4F0-730C-4529-AA62-066312180FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7717B093-1CC6-4A75-A27A-72D719D2F47E} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
+		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A357216A-AEDF-4316-B972-3A0F6DE11B0A}
+	EndGlobalSection
+EndGlobal
