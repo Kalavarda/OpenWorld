@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Kalavarda.Primitives.Process;
 using OpenWorld.Models;
 
@@ -11,15 +12,23 @@ namespace OpenWorld.Processes
         private const float MinDistance = 0.1f;
 
         private readonly Hero _hero;
+        private readonly CancellationToken _cancellationToken;
         public event Action<IProcess> Completed;
 
-        public HeroMoveProcess(Hero hero)
+        public HeroMoveProcess(Hero hero, CancellationToken cancellationToken)
         {
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
+            _cancellationToken = cancellationToken;
         }
 
         public void Process(TimeSpan delta)
         {
+            if (_cancellationToken.IsCancellationRequested)
+            {
+                Stop();
+                return;
+            }
+
             if (_hero.Position.DistanceTo(_hero.MoveTarget) < MinDistance)
                 return;
 

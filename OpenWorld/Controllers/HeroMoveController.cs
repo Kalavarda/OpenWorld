@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using OpenWorld.Models;
+using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Controllers
 {

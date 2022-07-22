@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Immutable;
 using System.Linq;
+using System.Threading;
 using Kalavarda.Primitives.Process;
+using Kalavarda.Primitives.Units;
 using OpenWorld.Models;
 
 namespace OpenWorld.Processes
@@ -9,20 +12,28 @@ namespace OpenWorld.Processes
     {
         private readonly Hero _hero;
         private readonly IProcessor _processor;
+        private readonly CancellationToken _cancellationToken;
 
         public event Action<IProcess> Completed;
 
-        public MobsProcess(Hero hero, IProcessor processor)
+        public MobsProcess(Hero hero, IProcessor processor, CancellationToken cancellationToken)
         {
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
             _processor = processor ?? throw new ArgumentNullException(nameof(processor));
+            _cancellationToken = cancellationToken;
         }
 
         public void Process(TimeSpan delta)
         {
+            if (_cancellationToken.IsCancellationRequested)
+            {
+                Stop();
+                return;
+            }
+
             RemoveDeadMobs();
 
-            foreach (var mob in Mob.Mobs)
+            foreach (var mob in Mob.Mobs.ToImmutableArray())
                 switch (mob.State)
                 {
                     case Mob.MobState.New:

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld", "OpenWorld\OpenWorld.csproj", "{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives", "Libs\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj", "{7717B093-1CC6-4A75-A27A-72D719D2F47E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.WPF", "Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj", "{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.Units", "Libs\Primitives\Kalavarda.Primitives.Units\Kalavarda.Primitives.Units.csproj", "{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
 		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
+		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A357216A-AEDF-4316-B972-3A0F6DE11B0A}

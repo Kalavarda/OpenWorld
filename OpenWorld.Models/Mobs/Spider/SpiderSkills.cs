@@ -2,6 +2,7 @@
 using Kalavarda.Primitives;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
+using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Models.Mobs.Spider
 {
@@ -11,7 +12,7 @@ namespace OpenWorld.Models.Mobs.Spider
 
         public float MinDistance => 0;
 
-        public float MaxDistance => 1.5f;
+        public float MaxDistance => 1;
 
         public ITimeLimiter TimeLimiter { get; } = new TimeLimiter(TimeSpan.FromSeconds(1));
 

@@ -1,4 +1,4 @@
-﻿using OpenWorld.Models;
+﻿using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Controls
 {

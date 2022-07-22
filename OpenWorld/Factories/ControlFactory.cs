@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
 using Kalavarda.Primitives.Abstract;
+using Kalavarda.Primitives.Units;
 using OpenWorld.Controls;
-using OpenWorld.Models;
 
 namespace OpenWorld.Factories
 {
@@ -12,6 +12,9 @@ namespace OpenWorld.Factories
         {
             if (mapObject is Mob mob)
                 return new MobControl { Mob = mob };
+
+            if (mapObject is Spawn)
+                return null;
 
             throw new NotImplementedException();
         }

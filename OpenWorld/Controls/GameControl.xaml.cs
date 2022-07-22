@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Kalavarda.Primitives.Abstract;
+using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
 using OpenWorld.Models;
@@ -47,6 +48,9 @@ namespace OpenWorld.Controls
 
         private void Map_LayerAdded(MapLayer mapLayer)
         {
+            if (mapLayer.IsHidden)
+                return;
+
             mapLayer.ObjectAdded += MapLayer_ObjectAdded;
             foreach (var mapObject in mapLayer.Objects)
                 MapLayer_ObjectAdded(mapObject);
@@ -55,6 +59,8 @@ namespace OpenWorld.Controls
         private void MapLayer_ObjectAdded(IMapObject mapObject)
         {
             var control = App.ControlFactory.Create(mapObject);
+            if (control == null)
+                return;
             _mapCanvas.Children.Add(control);
             var positionController = new PositionController(control, mapObject);
             _positionControllers.Add(mapObject, positionController);
