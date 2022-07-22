@@ -18,6 +18,7 @@ namespace OpenWorld.Windows
         {
             Game = game;
             _gameControl.Game = game;
+            _heroHP.Range = game.Hero.HP;
         }
 
         public void ShowToolWindow(UserControl content, int width, int height, string title)

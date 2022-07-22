@@ -17,6 +17,7 @@ namespace OpenWorld.Windows
         {
             var game = App.GameFactory.Create();
             App.Processor.Add(new HeroMoveProcess(game.Hero));
+            App.Processor.Add(new MobsProcess(game.Hero, App.Processor));
 
             var window = new GameWindow(game) { Owner = this };
             window.ShowDialog();

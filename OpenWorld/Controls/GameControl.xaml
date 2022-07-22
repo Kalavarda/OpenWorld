@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:OpenWorld.Controls;assembly=OpenWorld.Controls"
              Background="#01808080">
-    <Canvas Background="#80000080" x:Name="_canvas">
+    <Canvas Background="#80008000" x:Name="_canvas">
         <Canvas.RenderTransform>
             <TransformGroup>
                 <ScaleTransform x:Name="_scaleTransform"/>
