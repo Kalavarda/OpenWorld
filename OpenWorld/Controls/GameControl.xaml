@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:OpenWorld.Controls;assembly=OpenWorld.Controls"
              Background="#01808080">
-    <Canvas Background="#80008000" x:Name="_canvas">
-        <Canvas.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform x:Name="_scaleTransform"/>
-                <TranslateTransform x:Name="_translateTransform"/>
-            </TransformGroup>
-        </Canvas.RenderTransform>
-        <Canvas x:Name="_mapCanvas"/>
-        <controls:HeroControl x:Name="_heroControl"/>
-    </Canvas>
+    <Grid x:Name="_bk" Background="#40008000">
+        <Canvas x:Name="_canvas">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="_scaleTransform"/>
+                    <TranslateTransform x:Name="_translateTransform"/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Canvas x:Name="_mapCanvas"/>
+            <controls:HeroControl x:Name="_heroControl"/>
+        </Canvas>
+    </Grid>
 </UserControl>

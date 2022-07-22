@@ -12,6 +12,7 @@ namespace OpenWorld.Controls
         private Game _game;
         private HeroMoveController _heroMoveController;
         private PositionController _heroPositionController;
+        private HeroToScreenCenterController _heroToScreenCenterController;
 
         private readonly IDictionary<IMapObject, PositionController> _positionControllers = new Dictionary<IMapObject, PositionController>();
 
@@ -27,6 +28,8 @@ namespace OpenWorld.Controls
                     _heroMoveController.Dispose();
                 if (_heroPositionController != null)
                     _heroPositionController.Dispose();
+                if (_heroToScreenCenterController != null)
+                    _heroToScreenCenterController.Dispose();
 
                 if (_game != null)
                     _game.Map.LayerAdded -= Map_LayerAdded;
@@ -35,9 +38,11 @@ namespace OpenWorld.Controls
 
                 if (_game != null)
                 {
-                    _heroMoveController = new HeroMoveController(_canvas, _game.Hero);
+                    _heroMoveController = new HeroMoveController(_bk, _game.Hero);
                     _heroPositionController = new PositionController(_heroControl, _game.Hero);
                     _heroControl.Hero = _game.Hero;
+
+                    _heroToScreenCenterController = new HeroToScreenCenterController(_canvas, _game.Hero);
 
                     _game.Map.LayerAdded += Map_LayerAdded;
                     foreach (var mapLayer in _game.Map.Layers)
@@ -71,6 +76,13 @@ namespace OpenWorld.Controls
             InitializeComponent();
 
             _scaleTransform.ScaleX = _scaleTransform.ScaleY = Settings.Default.GameControlScale;
+
+            Unloaded += GameControl_Unloaded;
+        }
+
+        private void GameControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Game = null;
         }
     }
 }

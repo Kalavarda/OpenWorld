@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:OpenWorld.Controls"
         xmlns:controls1="clr-namespace:Kalavarda.Primitives.WPF.Controls;assembly=Kalavarda.Primitives.WPF"
-        Title="Game" Height="450" Width="800" Background="Black"
+        Title="Game" Height="800" Width="1200" Background="Black"
         ShowInTaskbar="False">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +17,7 @@
             </MenuItem>
         </Menu>
         
-        <controls:GameControl x:Name="_gameControl" Grid.Row="1"/>
+        <controls:GameControl x:Name="_gameControl" Grid.Row="1" ClipToBounds="True"/>
         <controls1:RangeControl x:Name="_heroHP" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100" Width="400" Height="40" MainBrush="Green" Grid.Row="1"/>
     </Grid>
 </Window>

@@ -33,7 +33,7 @@ namespace OpenWorld.Processes
 
             RemoveDeadMobs();
 
-            foreach (var mob in Mob.Mobs.ToImmutableArray())
+            foreach (var mob in Mob.Mobs.ToArray())
                 switch (mob.State)
                 {
                     case Mob.MobState.New:
@@ -91,7 +91,7 @@ namespace OpenWorld.Processes
             var deadMobs = Mob.Mobs
                 .Where(m => m.State == Mob.MobState.Dead)
                 .Where(m => DateTime.Now - m.StateChangedTime > Settings.Default.MobDeadDuration);
-            foreach (var mob in deadMobs)
+            foreach (var mob in deadMobs.ToImmutableArray())
                 Mob.Remove(mob);
         }
 

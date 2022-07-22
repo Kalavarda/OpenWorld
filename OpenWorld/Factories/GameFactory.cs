@@ -25,7 +25,7 @@ namespace OpenWorld.Factories
             for (var i = 0; i < 20; i++)
             {
                 var r = 2 + 10 * rand.NextSingle();
-                var a = MathF.PI * rand.NextSingle();
+                var a = 2 * MathF.PI * rand.NextSingle();
                 var spawn = new SpiderSpawn();
                 spawn.Position.Set(r * MathF.Cos(a), r * MathF.Sin(a));
                 spawnsLayer.Add(spawn);

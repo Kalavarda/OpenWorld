@@ -7,10 +7,11 @@ namespace OpenWorld.Controllers
 {
     internal class HeroMoveController: IDisposable
     {
-        private readonly IInputElement _inputElement;
+        private readonly FrameworkElement _inputElement;
         private readonly Unit _hero;
+        private static readonly float GameControlScale = (float)Settings.Default.GameControlScale;
 
-        public HeroMoveController(IInputElement inputElement, Unit hero)
+        public HeroMoveController(FrameworkElement inputElement, Unit hero)
         {
             _inputElement = inputElement ?? throw new ArgumentNullException(nameof(inputElement));
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
@@ -27,13 +28,7 @@ namespace OpenWorld.Controllers
 
             if (_inputElement.CaptureMouse())
             {
-                var mousePos = e.GetPosition(_inputElement);
-                var x = (float)mousePos.X;
-                var y = (float)mousePos.Y;
-                _hero.MoveTarget.Set(x, y);
-                var angle = _hero.Position.AngleTo(x, y);
-                _hero.MoveDirection.Value = angle;
-
+                Process(e);
                 _hero.MoveSpeed.SetMax();
                 e.Handled = true;
             }
@@ -46,12 +41,7 @@ namespace OpenWorld.Controllers
 
             if (_inputElement.IsMouseCaptured)
             {
-                var mousePos = e.GetPosition(_inputElement);
-                var x = (float)mousePos.X;
-                var y = (float)mousePos.Y;
-                _hero.MoveTarget.Set(x, y);
-                var angle = _hero.Position.AngleTo(x, y);
-                _hero.MoveDirection.Value = angle;
+                Process(e);
                 e.Handled = true;
             }
         }
@@ -67,6 +57,19 @@ namespace OpenWorld.Controllers
                 _inputElement.ReleaseMouseCapture();
                 e.Handled = true;
             }
+        }
+
+        private void Process(MouseEventArgs e)
+        {
+            var w = _inputElement.ActualWidth / 2;
+            var h = _inputElement.ActualHeight / 2;
+
+            var mousePos = e.GetPosition(_inputElement);
+            var x = (float)(mousePos.X - w) * GameControlScale;
+            var y = (float)(mousePos.Y - h) * GameControlScale;
+            _hero.MoveTarget.Set(x, y);
+            var angle = _hero.Position.AngleTo(x, y);
+            _hero.MoveDirection.Value = angle;
         }
 
         public void Dispose()

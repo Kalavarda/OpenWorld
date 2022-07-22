@@ -20,7 +20,7 @@ namespace OpenWorld.Models.Mobs.Spider
         {
             if (initializer is Mob mob)
             {
-                mob.Target.HP.Value -= 10;
+                mob.Target.HP.Value -= 1;
                 return null;
             }
             else
