@@ -12,7 +12,7 @@ namespace OpenWorld.Models.Mobs.Spider
 
         protected override Unit CreateUnit()
         {
-            return new Spider(new RangeF { Max = 0.5f }, this);
+            return new Spider(new RangeF { Max = 1.0f }, this);
         }
     }
 }

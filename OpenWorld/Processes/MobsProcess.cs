@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
 using Kalavarda.Primitives.Process;
@@ -33,7 +32,7 @@ namespace OpenWorld.Processes
 
             RemoveDeadMobs();
 
-            foreach (var mob in Mob.Mobs.ToArray())
+            foreach (var mob in Mob.Mobs)
                 switch (mob.State)
                 {
                     case Mob.MobState.New:
@@ -91,7 +90,7 @@ namespace OpenWorld.Processes
             var deadMobs = Mob.Mobs
                 .Where(m => m.State == Mob.MobState.Dead)
                 .Where(m => DateTime.Now - m.StateChangedTime > Settings.Default.MobDeadDuration);
-            foreach (var mob in deadMobs.ToImmutableArray())
+            foreach (var mob in deadMobs)
                 Mob.Remove(mob);
         }
 

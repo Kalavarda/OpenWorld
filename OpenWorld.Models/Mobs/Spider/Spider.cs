@@ -16,7 +16,7 @@ namespace OpenWorld.Models.Mobs.Spider
 
         public Spider(RangeF moveSpeed, Spawn spawn) : base(moveSpeed, spawn)
         {
-            Bounds = new RoundBounds(Position, 0.2f);
+            Bounds = new RoundBounds(Position, 0.3f);
             
             HP.Max = 2;
             HP.SetMax();
@@ -26,9 +26,9 @@ namespace OpenWorld.Models.Mobs.Spider
 
         public override IEnumerable<ISkill> Skills => _skills;
 
-        public override float AggrDistance => 1;
+        public override float AggrDistance => 10;
 
-        public override float MaxDistanceFromSpawn => 10;
+        public override float MaxDistanceFromSpawn => 20;
 
         public override IProcess CreateFightProcess(IProcessor processor)
         {

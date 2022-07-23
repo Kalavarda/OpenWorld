@@ -4,7 +4,7 @@
         xmlns:controls="clr-namespace:OpenWorld.Controls"
         xmlns:controls1="clr-namespace:Kalavarda.Primitives.WPF.Controls;assembly=Kalavarda.Primitives.WPF"
         Title="Game" Height="800" Width="1200" Background="Black"
-        ShowInTaskbar="False">
+        ShowInTaskbar="False" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
