@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
 using OpenWorld.Controls;
 using OpenWorld.Models;
@@ -11,6 +12,7 @@ namespace OpenWorld.Windows
     {
         private readonly TargetSelectorController _targetSelectorController;
         private readonly SoundController _soundController;
+        private readonly SkillController _skillController;
 
         public Game Game { get; }
 
@@ -28,7 +30,8 @@ namespace OpenWorld.Windows
             var targetSelector = new TargetSelector(game.Hero, game.Map, 20);
             _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
 
-            _soundController = new SoundController(game.Map, App.SoundPlayer);
+            _soundController = new SoundController(game.Map, game.Hero, App.SoundPlayer);
+            _skillController = new SkillController(this, App.Processor, App.SkillBinds);
 
             Unloaded += OnUnloaded;
         }
@@ -37,6 +40,7 @@ namespace OpenWorld.Windows
         {
             _targetSelectorController.Dispose();
             _soundController.Dispose();
+            _skillController.Dispose();
         }
 
         public void ShowToolWindow(UserControl content, int width, int height, string title)
@@ -62,7 +66,7 @@ namespace OpenWorld.Windows
         private void OnMobDebugWindowClick(object sender, RoutedEventArgs e)
         {
             var control = new MobDebugControl(Game);
-            ShowToolWindow(control, 200, 100, nameof(Mob));
+            ShowToolWindow(control, 200, 200, nameof(Mob));
         }
     }
 }

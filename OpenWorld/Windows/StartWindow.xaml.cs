@@ -27,6 +27,8 @@ namespace OpenWorld.Windows
             App.Processor.Add(new MobsProcess(game.Hero, App.Processor, _cancellationTokenSource.Token));
             App.Processor.Add(new SpawnsProcess(game.Map, game.Map.Layers.First(), _cancellationTokenSource.Token));
 
+            ((HeroSkillBinds)App.SkillBinds).Hero = game.Hero; // TODO
+
             var window = new GameWindow(game) { Owner = this };
             window.Closing += (_, _) => _cancellationTokenSource.Cancel();
             window.ShowDialog();

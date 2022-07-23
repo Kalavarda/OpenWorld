@@ -14,10 +14,14 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Position: "/>
         <TextBox x:Name="_tbPosition" Grid.Column="1"/>
+
+        <TextBlock Text="State: " Grid.Row="1"/>
+        <TextBox x:Name="_tbState" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </UserControl>

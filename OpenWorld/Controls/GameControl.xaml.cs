@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Controls;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
 using OpenWorld.Models;
@@ -15,6 +17,7 @@ namespace OpenWorld.Controls
         private HeroToScreenCenterController _heroToScreenCenterController;
 
         private readonly IDictionary<IMapObject, PositionController> _positionControllers = new Dictionary<IMapObject, PositionController>();
+        private readonly IDictionary<IMapObject, UserControl> _userControls = new Dictionary<IMapObject, UserControl>();
 
         public Game Game
         {
@@ -63,12 +66,35 @@ namespace OpenWorld.Controls
 
         private void MapLayer_ObjectAdded(IMapObject mapObject)
         {
-            var control = App.ControlFactory.Create(mapObject);
-            if (control == null)
-                return;
-            _mapCanvas.Children.Add(control);
-            var positionController = new PositionController(control, mapObject);
-            _positionControllers.Add(mapObject, positionController);
+            this.Do(() =>
+            {
+                var control = App.ControlFactory.Create(mapObject);
+                if (control == null)
+                    return;
+                _userControls.Add(mapObject, control);
+                _mapCanvas.Children.Add(control);
+
+                var positionController = new PositionController(control, mapObject);
+                _positionControllers.Add(mapObject, positionController);
+
+                if (mapObject is Unit unit)
+                    unit.Disposing += Unit_Disposing;
+            });
+        }
+
+        private void Unit_Disposing(Unit unit)
+        {
+            unit.Disposing -= Unit_Disposing;
+            this.Do(() =>
+            {
+                var control = _userControls[unit];
+                _mapCanvas.Children.Remove(control);
+                _userControls.Remove(unit);
+
+                var positionController = _positionControllers[unit];
+                positionController.Dispose();
+                _positionControllers.Remove(unit);
+            });
         }
 
         public GameControl()

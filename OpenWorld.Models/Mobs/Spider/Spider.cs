@@ -17,30 +17,24 @@ namespace OpenWorld.Models.Mobs.Spider
         {
             Bounds = new RoundBounds(Position, 0.3f);
             
-            HP.Max = 2;
+            HP.Max = 10;
             HP.SetMax();
 
             _skills = new ISkill[]
             {
                 new SpiderAttack(this)
             };
-
             foreach (var skill in _skills.OfType<IMakeSounds>())
-                skill.PlaySound += Skill_PlaySound;
-        }
-
-        private void Skill_PlaySound(string soundCode)
-        {
-            RaisePlaySound(soundCode);
+                skill.PlaySound += RaisePlaySound;
         }
 
         public override BoundsF Bounds { get; }
 
         public override IEnumerable<ISkill> Skills => _skills;
 
-        public override float AggrDistance => 10;
+        public override float AggrDistance => 5;
 
-        public override float MaxDistanceFromSpawn => 20;
+        public override float MaxDistanceFromSpawn => 2 * AggrDistance;
 
         public override IProcess CreateFightProcess(IProcessor processor)
         {

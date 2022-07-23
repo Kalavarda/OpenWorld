@@ -72,6 +72,12 @@ namespace OpenWorld.Processes
                         break;
 
                     case Mob.MobState.Dead:
+                        if (DateTime.Now - mob.StateChangedTime > Settings.Default.MobDeadDuration)
+                        {
+                            mob.State = Mob.MobState.Removing;
+                            mob.Dispose();
+                        }
+
                         break;
                 }
         }
@@ -85,10 +91,11 @@ namespace OpenWorld.Processes
             mob.Position.Set(mob.Position.X + dx, mob.Position.Y + dy);
         }
 
+        // TODO: replace with event Unit.Disposing
         private static void RemoveDeadMobs()
         {
             var deadMobs = Mob.Mobs
-                .Where(m => m.State == Mob.MobState.Dead)
+                .Where(m => m.State == Mob.MobState.Removing)
                 .Where(m => DateTime.Now - m.StateChangedTime > Settings.Default.MobDeadDuration);
             foreach (var mob in deadMobs)
                 Mob.Remove(mob);
