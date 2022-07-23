@@ -2,6 +2,7 @@
 using Kalavarda.Primitives;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
+using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Models.Mobs.Spider
@@ -25,6 +26,8 @@ namespace OpenWorld.Models.Mobs.Spider
             if (initializer is Mob mob)
                 _timeLimiter.Do(() =>
                 {
+                    mob.DoPlaySound(nameof(SpiderAttack));
+
                     mob.Target.HP.Value -= 2;
                     //process = null;
                 });
@@ -33,5 +36,7 @@ namespace OpenWorld.Models.Mobs.Spider
 
             return process;
         }
+
+        public event Action<string> PlaySound;
     }
 }

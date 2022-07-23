@@ -10,6 +10,7 @@ namespace OpenWorld.Windows
     public partial class GameWindow
     {
         private readonly TargetSelectorController _targetSelectorController;
+        private readonly SoundController _soundController;
 
         public Game Game { get; }
 
@@ -27,12 +28,15 @@ namespace OpenWorld.Windows
             var targetSelector = new TargetSelector(game.Hero, game.Map, 20);
             _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
 
+            _soundController = new SoundController(game.Map, App.SoundPlayer);
+
             Unloaded += OnUnloaded;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             _targetSelectorController.Dispose();
+            _soundController.Dispose();
         }
 
         public void ShowToolWindow(UserControl content, int width, int height, string title)

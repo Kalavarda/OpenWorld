@@ -22,9 +22,9 @@ namespace OpenWorld.Factories
         {
             var rand = new Random();
             var spawnsLayer = new MapLayer { IsHidden = true };
-            for (var i = 0; i < 1000; i++)
+            for (var i = 0; i < 100; i++)
             {
-                var r = 11 + 50 * rand.NextSingle();
+                var r = 20 + 50 * rand.NextSingle();
                 var a = 2 * MathF.PI * rand.NextSingle();
                 var spawn = new SpiderSpawn();
                 spawn.Position.Set(r * MathF.Cos(a), r * MathF.Sin(a));

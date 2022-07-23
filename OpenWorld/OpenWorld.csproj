@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fireball_01.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Fireball_01.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj" />
     <ProjectReference Include="..\OpenWorld.Controls\OpenWorld.Controls.csproj" />
     <ProjectReference Include="..\OpenWorld.Models\OpenWorld.Models.csproj" />
