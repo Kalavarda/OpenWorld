@@ -14,6 +14,7 @@
         <Menu>
             <MenuItem Header="Debug">
                 <MenuItem Header="Hero..." Click="OnHeroDebugWindowClick"/>
+                <MenuItem Header="Target..." Click="OnMobDebugWindowClick"/>
             </MenuItem>
         </Menu>
         

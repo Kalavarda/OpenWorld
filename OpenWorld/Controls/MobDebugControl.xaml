@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="OpenWorld.Controls.MobDebugControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultText}"/>
+        <Style TargetType="TextBox" BasedOn="{StaticResource ReadOnlyTextBox}"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Position: "/>
+        <TextBox x:Name="_tbPosition" Grid.Column="1"/>
+    </Grid>
+</UserControl>

@@ -11,7 +11,7 @@ namespace OpenWorld
             switch (soundKey)
             {
                 case nameof(SpiderAttack):
-                    return "Fireball_01.mp3";
+                    return "Bite.mp3";
 
                 default:
                     throw new NotImplementedException();

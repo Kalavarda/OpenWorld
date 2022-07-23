@@ -3,38 +3,37 @@ using Kalavarda.Primitives;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
-using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Models.Mobs.Spider
 {
-    public class SpiderAttack: ISkill, IDistanceSkill
+    public class SpiderAttack: ISkill, IDistanceSkill, IMakeSounds
     {
+        private readonly Spider _spider;
         private readonly TimeLimiter _timeLimiter = new(TimeSpan.FromSeconds(1));
 
         public string Name => "Укус";
 
         public float MinDistance => 0;
 
-        public float MaxDistance => 1;
+        public float MaxDistance => 0.5f;
 
         public ITimeLimiter TimeLimiter => _timeLimiter;
 
-        public IProcess Use(ISkilled initializer)
+        public SpiderAttack(Spider spider)
         {
-            IProcess process = null;
+            _spider = spider ?? throw new ArgumentNullException(nameof(spider));
+        }
 
-            if (initializer is Mob mob)
-                _timeLimiter.Do(() =>
-                {
-                    mob.DoPlaySound(nameof(SpiderAttack));
+        public IProcess Use()
+        {
+            _timeLimiter.Do(() =>
+            {
+                PlaySound?.Invoke(nameof(SpiderAttack));
 
-                    mob.Target.HP.Value -= 2;
-                    //process = null;
-                });
-            else
-                throw new NotImplementedException();
+                _spider.Target.HP.Value -= 2;
+            });
 
-            return process;
+            return null;
         }
 
         public event Action<string> PlaySound;

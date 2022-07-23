@@ -58,5 +58,11 @@ namespace OpenWorld.Windows
             var control = new HeroDebugControl(Game.Hero);
             ShowToolWindow(control, 200, 100, nameof(Hero));
         }
+
+        private void OnMobDebugWindowClick(object sender, RoutedEventArgs e)
+        {
+            var control = new MobDebugControl(Game);
+            ShowToolWindow(control, 200, 100, nameof(Mob));
+        }
     }
 }

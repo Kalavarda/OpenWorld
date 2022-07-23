@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Fireball_01.mp3" />
+    <None Remove="Resources\Bite.mp3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Fireball_01.mp3">
+    <Content Include="Resources\Bite.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
