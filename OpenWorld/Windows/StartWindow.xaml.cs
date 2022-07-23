@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using Kalavarda.Primitives.Units;
@@ -16,9 +18,17 @@ namespace OpenWorld.Windows
 
             var assemblyName = typeof(StartWindow).Assembly.GetName();
             Title = assemblyName.Name + " " + assemblyName.Version;
+
+            Loaded += StartWindow_Loaded;
         }
 
-        private void OnStartClick(object sender, RoutedEventArgs e)
+        private void StartWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Debugger.IsAttached)
+                OnStartClick(null, EventArgs.Empty);
+        }
+
+        private void OnStartClick(object sender, EventArgs e)
         {
             _cancellationTokenSource = new CancellationTokenSource();
 

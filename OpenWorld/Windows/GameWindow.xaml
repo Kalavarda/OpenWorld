@@ -15,10 +15,12 @@
             <MenuItem Header="Debug">
                 <MenuItem Header="Hero..." Click="OnHeroDebugWindowClick"/>
                 <MenuItem Header="Target..." Click="OnMobDebugWindowClick"/>
+                <MenuItem Header="Debug..." Click="OnDebugWindowClick"/>
             </MenuItem>
         </Menu>
         
         <controls:GameControl x:Name="_gameControl" Grid.Row="1" ClipToBounds="True"/>
         <controls1:RangeControl x:Name="_heroHP" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100" Width="400" Height="40" MainBrush="Green" Grid.Row="1"/>
+        <controls:TargetControl x:Name="_targetControl" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100" Grid.Row="1"/>
     </Grid>
 </Window>

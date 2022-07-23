@@ -17,7 +17,10 @@ namespace OpenWorld.Controls
                     return;
 
                 if (_mob != null)
+                {
                     _mob.IsSelectedChanged -= Mob_IsSelectedChanged;
+                    _mob.StateChanged -= Mob_StateChanged;
+                }
 
                 _mob = value;
 
@@ -28,18 +31,26 @@ namespace OpenWorld.Controls
 
                     _mob.IsSelectedChanged += Mob_IsSelectedChanged;
                     Mob_IsSelectedChanged(_mob);
+
+                    _mob.StateChanged += Mob_StateChanged;
+                    Mob_StateChanged(_mob, Mob.MobState.New, _mob.State);
                 }
             }
+        }
+
+        private void Mob_StateChanged(Mob arg1, Mob.MobState arg2, Mob.MobState arg3)
+        {
+            this.Do(() =>
+            {
+                Opacity = _mob.IsDead ? 0.25 : 1;
+            });
         }
 
         private void Mob_IsSelectedChanged(Unit mob)
         {
             this.Do(() =>
             {
-                if (_mob.IsSelected)
-                    Background = Brushes.Maroon;
-                else
-                    Background = Brushes.Transparent;
+                Background = _mob.IsSelected ? Brushes.Maroon : Brushes.Transparent;
             });
         }
 

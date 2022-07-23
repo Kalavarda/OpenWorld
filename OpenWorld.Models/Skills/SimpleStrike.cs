@@ -24,6 +24,10 @@ namespace OpenWorld.Models.Skills
         {
             _timeLimiter.Do(() =>
             {
+                var distance = _hero.Position.DistanceTo(_hero.Target.Position);
+                if (distance > MaxDistance)
+                    return;
+
                 PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
                 _hero.Target.HP.Value -= 10;
             });

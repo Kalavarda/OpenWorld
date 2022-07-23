@@ -33,7 +33,16 @@ namespace OpenWorld.Windows
             _soundController = new SoundController(game.Map, game.Hero, App.SoundPlayer);
             _skillController = new SkillController(this, App.Processor, App.SkillBinds);
 
+            game.Hero.TargetChanged += Hero_TargetChanged;
+            Hero_TargetChanged(null, game.Hero.Target);
+
             Unloaded += OnUnloaded;
+        }
+
+        private void Hero_TargetChanged(Unit oldTarget, Unit newTarget)
+        {
+            _targetControl.Visibility = newTarget != null ? Visibility.Visible : Visibility.Collapsed;
+            _targetControl.Target = newTarget;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -41,6 +50,7 @@ namespace OpenWorld.Windows
             _targetSelectorController.Dispose();
             _soundController.Dispose();
             _skillController.Dispose();
+            Game.Hero.TargetChanged -= Hero_TargetChanged;
         }
 
         public void ShowToolWindow(UserControl content, int width, int height, string title)
@@ -67,6 +77,11 @@ namespace OpenWorld.Windows
         {
             var control = new MobDebugControl(Game);
             ShowToolWindow(control, 200, 200, nameof(Mob));
+        }
+
+        private void OnDebugWindowClick(object sender, RoutedEventArgs e)
+        {
+            new DebugWindow { Owner = this }.Show();
         }
     }
 }

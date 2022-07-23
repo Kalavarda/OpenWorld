@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Resources\Bite.mp3" />
     <None Remove="Resources\Hero\SimpleStrike.mp3" />
+    <None Remove="Resources\Map\Grass.jpg" />
   </ItemGroup>
 
   <ItemGroup>
