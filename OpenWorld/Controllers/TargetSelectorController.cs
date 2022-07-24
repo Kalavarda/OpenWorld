@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using Kalavarda.Primitives.Units;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controllers
 {

@@ -3,11 +3,14 @@ using Kalavarda.Primitives;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
+using Kalavarda.Primitives.Units;
 
-namespace OpenWorld.Models.Skills
+namespace OpenWorld.Models.Hero
 {
     public class SimpleStrike: ISkill, IDistanceSkill, IMakeSounds, IHasKey
     {
+        private const int AttackPower = 1;
+
         private readonly Hero _hero;
         private readonly TimeLimiter _timeLimiter = new(TimeSpan.FromSeconds(1));
 
@@ -28,8 +31,10 @@ namespace OpenWorld.Models.Skills
                 if (distance > MaxDistance)
                     return;
 
+                var changes = new UnitChanges(-AttackPower);
+                Unit.Apply(_hero, changes, _hero.Target);
+
                 PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
-                _hero.Target.HP.Value -= 1;
             });
 
             return null;

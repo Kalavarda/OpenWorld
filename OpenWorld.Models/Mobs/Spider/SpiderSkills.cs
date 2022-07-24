@@ -3,11 +3,14 @@ using Kalavarda.Primitives;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
+using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Models.Mobs.Spider
 {
     public class SpiderAttack: ISkill, IDistanceSkill, IMakeSounds
     {
+        private const int AttackPower = 1;
+
         private readonly Spider _spider;
         private readonly TimeLimiter _timeLimiter = new(TimeSpan.FromSeconds(1));
 
@@ -28,9 +31,10 @@ namespace OpenWorld.Models.Mobs.Spider
         {
             _timeLimiter.Do(() =>
             {
-                PlaySound?.Invoke(nameof(SpiderAttack));
+                var changes = new UnitChanges(-AttackPower);
+                Unit.Apply(_spider, changes, _spider.Target);
 
-                _spider.Target.HP.Value -= 2;
+                PlaySound?.Invoke(nameof(SpiderAttack));
             });
 
             return null;

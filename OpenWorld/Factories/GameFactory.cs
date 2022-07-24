@@ -6,6 +6,7 @@ using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Map;
 using OpenWorld.Controls;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 using OpenWorld.Models.MapOjects;
 using OpenWorld.Models.Mobs.Spider;
 

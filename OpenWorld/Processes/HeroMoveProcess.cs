@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Kalavarda.Primitives.Process;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Processes
 {

@@ -5,9 +5,8 @@ using Kalavarda.Primitives.Geometry;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
-using OpenWorld.Models.Skills;
 
-namespace OpenWorld.Models
+namespace OpenWorld.Models.Hero
 {
     public class Hero: Unit
     {

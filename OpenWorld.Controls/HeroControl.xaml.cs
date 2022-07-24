@@ -1,4 +1,5 @@
 ﻿using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controls
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using Kalavarda.Primitives.WPF;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controls
 {

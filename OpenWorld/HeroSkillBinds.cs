@@ -4,7 +4,7 @@ using System.Windows.Input;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Models;
-using OpenWorld.Models.Skills;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld
 {

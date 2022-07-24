@@ -3,6 +3,7 @@ using System.Linq;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 using OpenWorld.Models.MapOjects;
 
 namespace OpenWorld.Controllers

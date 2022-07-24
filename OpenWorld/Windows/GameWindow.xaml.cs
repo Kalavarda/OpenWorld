@@ -5,6 +5,7 @@ using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
 using OpenWorld.Controls;
 using OpenWorld.Models;
+using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Windows
 {
