@@ -57,7 +57,7 @@ namespace OpenWorld.Processes
                         if (mob.Position.DistanceTo(mob.Spawn.Position) > mob.MaxDistanceFromSpawn)
                             mob.State = Mob.MobState.Returning;
 
-                        if (mob.Target.HP.IsMin)
+                        if (mob.Target == null || mob.Target.HP.IsMin)
                             mob.State = Mob.MobState.Returning;
 
                         break;

@@ -42,8 +42,8 @@ namespace OpenWorld.Controls
                 if (_game != null)
                 {
                     _heroMoveController = new HeroMoveController(_bk, _game.Hero);
-                    _heroPositionController = new PositionController(_heroControl, _game.Hero);
                     _heroControl.Hero = _game.Hero;
+                    _heroPositionController = new PositionController(_heroControl, _game.Hero);
 
                     _heroToScreenCenterController = new HeroToScreenCenterController(_canvas, _game.Hero);
 

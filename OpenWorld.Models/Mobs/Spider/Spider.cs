@@ -17,7 +17,7 @@ namespace OpenWorld.Models.Mobs.Spider
         {
             Bounds = new RoundBounds(Position, 0.3f);
             
-            HP.Max = 10;
+            HP.Max = 1;
             HP.SetMax();
 
             _skills = new ISkill[]

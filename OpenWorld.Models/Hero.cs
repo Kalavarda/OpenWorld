@@ -17,7 +17,7 @@ namespace OpenWorld.Models
         {
             Bounds = new RoundBounds(Position, 0.75f / 2);
 
-            HP.Max = 100;
+            HP.Max = 10;
             HP.SetMax();
 
             _skills = new ISkill[]

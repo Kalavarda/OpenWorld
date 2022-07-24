@@ -29,7 +29,7 @@ namespace OpenWorld.Models.Skills
                     return;
 
                 PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
-                _hero.Target.HP.Value -= 10;
+                _hero.Target.HP.Value -= 1;
             });
 
             return null;
