@@ -15,6 +15,7 @@ namespace OpenWorld.Windows
         private readonly SoundController _soundController;
         private readonly SkillController _skillController;
         private readonly HeroRespawnController _heroRespawnController;
+        private readonly FightController _fightController;
 
         public Game Game { get; }
 
@@ -27,26 +28,30 @@ namespace OpenWorld.Windows
         {
             Game = game;
             _gameControl.Game = game;
-            _heroHP.Range = game.Hero.HP;
 
             var targetSelector = new TargetSelector(game.Hero, game.Map, 20);
             _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
 
             _soundController = new SoundController(game.Map, game.Hero, App.SoundPlayer);
             _skillController = new SkillController(this, App.Processor, App.SkillBinds);
+            _fightController = new FightController(game.Map, game.Hero);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
 
             game.Hero.TargetChanged += Hero_TargetChanged;
             Hero_TargetChanged(null, game.Hero.Target);
 
+            _heroBar.Hero = game.Hero;
+            _heroBar.FightController = _fightController;
+            _targetBar.FightController = _fightController;
+
             Unloaded += OnUnloaded;
         }
 
         private void Hero_TargetChanged(Unit oldTarget, Unit newTarget)
         {
-            _targetControl.Visibility = newTarget != null ? Visibility.Visible : Visibility.Collapsed;
-            _targetControl.Target = newTarget;
+            _targetBar.Visibility = newTarget != null ? Visibility.Visible : Visibility.Collapsed;
+            _targetBar.Target = newTarget;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -55,6 +60,7 @@ namespace OpenWorld.Windows
             _soundController.Dispose();
             _skillController.Dispose();
             _heroRespawnController.Dispose();
+            _fightController.Dispose();
             Game.Hero.TargetChanged -= Hero_TargetChanged;
         }
 
