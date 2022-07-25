@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF.Controllers;
 using Kalavarda.Primitives.WPF.Skills;
@@ -18,6 +19,7 @@ namespace OpenWorld.Windows
         private readonly SkillController _skillController;
         private readonly HeroRespawnController _heroRespawnController;
         private readonly FightController _fightController;
+        private readonly MapEventAggregator _eventAggregator;
 
         public Game Game { get; }
 
@@ -31,9 +33,10 @@ namespace OpenWorld.Windows
             Game = game;
             _gameControl.Game = game;
 
-            _soundController = new SoundController(game.Map, game.Hero, App.SoundPlayer);
+            _eventAggregator = new MapEventAggregator(game.Map);
+            _soundController = new SoundController(_eventAggregator, game.Hero, App.SoundPlayer);
             _skillController = new SkillController(this, App.Processor, App.SkillBinds);
-            _fightController = new FightController(game.Map, game.Hero);
+            _fightController = new FightController(_eventAggregator, game.Hero);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
 
@@ -63,6 +66,7 @@ namespace OpenWorld.Windows
             _skillController.Dispose();
             _heroRespawnController.Dispose();
             _fightController.Dispose();
+            _eventAggregator.Dispose();
             Game.Hero.TargetChanged -= Hero_TargetChanged;
         }
 

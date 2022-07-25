@@ -10,7 +10,7 @@ namespace OpenWorld.Controls
     public partial class TargetBar
     {
         private Unit _target;
-        private FightController _fightController;
+        private IFightController _fightController;
 
         public Unit Target
         {
@@ -48,7 +48,7 @@ namespace OpenWorld.Controls
             });
         }
 
-        public FightController FightController
+        public IFightController FightController
         {
             get => _fightController;
             set

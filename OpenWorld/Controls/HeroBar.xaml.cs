@@ -9,7 +9,7 @@ namespace OpenWorld.Controls
     public partial class HeroBar
     {
         private Hero _hero;
-        private FightController _fightController;
+        private IFightController _fightController;
 
         public Hero Hero
         {
@@ -42,7 +42,7 @@ namespace OpenWorld.Controls
             });
         }
 
-        public FightController FightController
+        public IFightController FightController
         {
             get => _fightController;
             set

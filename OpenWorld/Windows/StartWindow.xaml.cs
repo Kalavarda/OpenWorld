@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using Kalavarda.Primitives.Units;
-using Kalavarda.Primitives.Units.Aggregators;
+using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
 using OpenWorld.Processes;

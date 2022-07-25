@@ -1,7 +1,7 @@
 ﻿using System;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
-using Kalavarda.Primitives.Units.Aggregators;
+using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Models.Hero;
 
