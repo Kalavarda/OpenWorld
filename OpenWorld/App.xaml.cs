@@ -1,10 +1,11 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Windows;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
-using Kalavarda.Primitives.WPF.Skills;
+using Kalavarda.Primitives.WPF.Binds;
 using OpenWorld.Factories;
 
 namespace OpenWorld
@@ -15,7 +16,7 @@ namespace OpenWorld
 
         internal static GameFactory GameFactory { get; }
 
-        internal static ILevelMultiplier LevelMultiplier { get; } = new LevelMultiplier();
+        internal static ILevelMultiplier LevelMultiplier { get; } = new LevelMultiplier(MathF.Sqrt(MathF.Sqrt(2)));
 
         internal static ControlFactory ControlFactory { get; } = new();
 
@@ -23,7 +24,9 @@ namespace OpenWorld
 
         internal static ISoundPlayer SoundPlayer { get; } = new SoundPlayer();
 
-        internal static ISkillBinds SkillBinds { get; } = new HeroSkillBinds();
+        internal static IKeyBinds KeyBinds { get; } = new KeyBinds();
+
+        internal static ISkillBinds SkillBinds { get; } = new SkillBinds();
 
         static App()
         {

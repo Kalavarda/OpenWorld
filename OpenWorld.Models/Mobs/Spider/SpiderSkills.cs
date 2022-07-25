@@ -41,5 +41,7 @@ namespace OpenWorld.Models.Mobs.Spider
         }
 
         public event Action<string> PlaySound;
+        
+        public string Key => nameof(SpiderAttack);
     }
 }

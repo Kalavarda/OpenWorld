@@ -4,8 +4,8 @@ using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF;
+using Kalavarda.Primitives.WPF.Binds;
 using Kalavarda.Primitives.WPF.Controllers;
-using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
 using OpenWorld.Controls;
 using OpenWorld.Models;
@@ -21,6 +21,7 @@ namespace OpenWorld.Windows
         private readonly HeroRespawnController _heroRespawnController;
         private readonly FightController _fightController;
         private readonly MapEventAggregator _eventAggregator;
+        private readonly KeyBindsController _keyBindsController;
 
         public Game Game { get; }
 
@@ -36,7 +37,8 @@ namespace OpenWorld.Windows
 
             _eventAggregator = new MapEventAggregator(game.Map);
             _soundController = new SoundController(_eventAggregator, game.Hero, App.SoundPlayer);
-            _skillController = new SkillController(this, App.Processor, App.SkillBinds);
+            _keyBindsController = new KeyBindsController(this, App.KeyBinds);
+            _skillController = new SkillController(_keyBindsController, App.Processor, App.SkillBinds, game.Hero);
             _fightController = new FightController(_eventAggregator, game.Hero);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
@@ -49,7 +51,7 @@ namespace OpenWorld.Windows
             _targetBar.FightController = _fightController;
 
             var targetSelector = new TargetSelector(game.Hero, game.Map, Settings.Default.TargetMaxDistance, _fightController, _gameControl.MousePositionDetector);
-            _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector, _eventAggregator, _fightController);
+            _targetSelectorController = new TargetSelectorController(game.Hero, targetSelector, _eventAggregator, _fightController, _keyBindsController);
 
             Unloaded += OnUnloaded;
         }
@@ -71,6 +73,7 @@ namespace OpenWorld.Windows
             _heroRespawnController.Dispose();
             _fightController.Dispose();
             _eventAggregator.Dispose();
+            _keyBindsController.Dispose();
             Game.Hero.TargetChanged -= Hero_TargetChanged;
         }
 

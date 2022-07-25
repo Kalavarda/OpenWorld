@@ -47,8 +47,6 @@ namespace OpenWorld.Windows
             _lootController = new LootController(game.Hero, _creatureEventAggregator, App.LevelMultiplier);
             _heroXpController = new HeroXpController(game.Hero, App.LevelMultiplier);
 
-            ((HeroSkillBinds)App.SkillBinds).Hero = game.Hero; // TODO
-
             var window = new GameWindow(game) { Owner = this };
             window.ControlBounds();
             window.Closing += (_, _) =>
