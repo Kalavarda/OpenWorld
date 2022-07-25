@@ -43,7 +43,7 @@ namespace OpenWorld.Windows
             _heroBar.FightController = _fightController;
             _targetBar.FightController = _fightController;
 
-            var targetSelector = new TargetSelector(game.Hero, game.Map, 20, _fightController);
+            var targetSelector = new TargetSelector(game.Hero, game.Map, 20, _fightController, _gameControl.MousePositionDetector);
             _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
 
             Unloaded += OnUnloaded;

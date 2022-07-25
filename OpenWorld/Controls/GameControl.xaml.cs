@@ -19,6 +19,8 @@ namespace OpenWorld.Controls
         private readonly IDictionary<IMapObject, PositionController> _positionControllers = new Dictionary<IMapObject, PositionController>();
         private readonly IDictionary<IMapObject, UserControl> _userControls = new Dictionary<IMapObject, UserControl>();
 
+        public MousePositionDetector MousePositionDetector { get; private set; }
+
         public Game Game
         {
             get => _game;
@@ -27,6 +29,8 @@ namespace OpenWorld.Controls
                 if (_game == value)
                     return;
 
+                if (MousePositionDetector != null)
+                    MousePositionDetector.Dispose();
                 if (_heroMoveController != null)
                     _heroMoveController.Dispose();
                 if (_heroPositionController != null)
@@ -41,7 +45,8 @@ namespace OpenWorld.Controls
 
                 if (_game != null)
                 {
-                    _heroMoveController = new HeroMoveController(_bk, _game.Hero);
+                    MousePositionDetector = new MousePositionDetector(_bk);
+                    _heroMoveController = new HeroMoveController(_bk, _game.Hero, MousePositionDetector);
                     _heroControl.Hero = _game.Hero;
                     _heroPositionController = new PositionController(_heroControl, _game.Hero);
 

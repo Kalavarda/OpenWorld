@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Controllers
@@ -9,12 +10,13 @@ namespace OpenWorld.Controllers
     {
         private readonly FrameworkElement _inputElement;
         private readonly Unit _hero;
-        private static readonly float GameControlScale = (float)Settings.Default.GameControlScale;
+        private readonly IMousePositionDetector _mousePositionDetector;
 
-        public HeroMoveController(FrameworkElement inputElement, Unit hero)
+        public HeroMoveController(FrameworkElement inputElement, Unit hero, IMousePositionDetector mousePositionDetector)
         {
             _inputElement = inputElement ?? throw new ArgumentNullException(nameof(inputElement));
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
+            _mousePositionDetector = mousePositionDetector ?? throw new ArgumentNullException(nameof(mousePositionDetector));
 
             _inputElement.MouseLeftButtonDown += InputElement_MouseLeftButtonDown;
             _inputElement.MouseMove += InputElement_MouseMove;
@@ -61,12 +63,7 @@ namespace OpenWorld.Controllers
 
         private void Process(MouseEventArgs e)
         {
-            var w = _inputElement.ActualWidth / 2;
-            var h = _inputElement.ActualHeight / 2;
-
-            var mousePos = e.GetPosition(_inputElement);
-            var x = (float)(mousePos.X - w) * GameControlScale;
-            var y = (float)(mousePos.Y - h) * GameControlScale;
+            var (x, y) = _mousePositionDetector.GetPosition();
             _hero.MoveTarget.Set(x, y);
             var angle = _hero.Position.AngleTo(x, y);
             _hero.MoveDirection.Value = angle;

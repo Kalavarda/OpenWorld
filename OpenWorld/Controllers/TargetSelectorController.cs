@@ -11,9 +11,9 @@ namespace OpenWorld.Controllers
     {
         private readonly IInputElement _inputElement;
         private readonly Hero _hero;
-        private readonly TargetSelector _targetSelector;
+        private readonly ITargetSelector _targetSelector;
 
-        public TargetSelectorController(IInputElement inputElement, Hero hero, TargetSelector targetSelector)
+        public TargetSelectorController(IInputElement inputElement, Hero hero, ITargetSelector targetSelector)
         {
             _inputElement = inputElement ?? throw new ArgumentNullException(nameof(inputElement));
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
