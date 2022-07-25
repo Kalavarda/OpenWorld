@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using Kalavarda.Primitives.Units;
+using OpenWorld.Controllers;
 using OpenWorld.Processes;
 
 namespace OpenWorld.Windows
@@ -11,6 +12,8 @@ namespace OpenWorld.Windows
     public partial class StartWindow
     {
         private CancellationTokenSource _cancellationTokenSource;
+        private LootController _lootController;
+        private HeroXpController _heroXpController;
 
         public StartWindow()
         {
@@ -37,10 +40,18 @@ namespace OpenWorld.Windows
             App.Processor.Add(new MobsProcess(game.Hero, App.Processor, _cancellationTokenSource.Token));
             App.Processor.Add(new SpawnsProcess(game.Map, game.Map.Layers.First(), _cancellationTokenSource.Token));
 
+            _lootController = new LootController(game.Hero, game.Map);
+            _heroXpController = new HeroXpController(game.Hero, App.LevelMultiplier);
+
             ((HeroSkillBinds)App.SkillBinds).Hero = game.Hero; // TODO
 
             var window = new GameWindow(game) { Owner = this };
-            window.Closing += (_, _) => _cancellationTokenSource.Cancel();
+            window.Closing += (_, _) =>
+            {
+                _cancellationTokenSource.Cancel();
+                _heroXpController.Dispose();
+                _lootController.Dispose();
+            };
             window.ShowDialog();
         }
     }

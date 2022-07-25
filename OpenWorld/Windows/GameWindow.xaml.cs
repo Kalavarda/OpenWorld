@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
 using OpenWorld.Controls;
@@ -29,9 +30,6 @@ namespace OpenWorld.Windows
             Game = game;
             _gameControl.Game = game;
 
-            var targetSelector = new TargetSelector(game.Hero, game.Map, 20);
-            _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
-
             _soundController = new SoundController(game.Map, game.Hero, App.SoundPlayer);
             _skillController = new SkillController(this, App.Processor, App.SkillBinds);
             _fightController = new FightController(game.Map, game.Hero);
@@ -44,6 +42,9 @@ namespace OpenWorld.Windows
             _heroBar.Hero = game.Hero;
             _heroBar.FightController = _fightController;
             _targetBar.FightController = _fightController;
+
+            var targetSelector = new TargetSelector(game.Hero, game.Map, 20, _fightController);
+            _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
 
             Unloaded += OnUnloaded;
         }

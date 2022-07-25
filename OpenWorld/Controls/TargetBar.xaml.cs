@@ -1,8 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF;
-using OpenWorld.Controllers;
 
 namespace OpenWorld.Controls
 {

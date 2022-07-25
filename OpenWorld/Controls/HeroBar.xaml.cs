@@ -1,6 +1,7 @@
 ﻿using System.Windows.Media;
+using Kalavarda.Primitives.Abstract;
+using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF;
-using OpenWorld.Controllers;
 using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controls
@@ -18,9 +19,27 @@ namespace OpenWorld.Controls
                 if (_hero == value)
                     return;
 
+                if (_hero != null)
+                    _hero.LevelChanged -= _hero_LevelChanged;
+
                 _hero = value;
                 _hpControl.Range = _hero?.HP;
+                _xpControl.Range = _hero?.XP;
+
+                if (_hero != null)
+                {
+                    _hero.LevelChanged += _hero_LevelChanged;
+                    _hero_LevelChanged(_hero);
+                }
             }
+        }
+
+        private void _hero_LevelChanged(IHasLevel hero)
+        {
+            this.Do(() =>
+            {
+                _tbLevel.Text = hero.Level.ToString();
+            });
         }
 
         public FightController FightController
@@ -54,6 +73,13 @@ namespace OpenWorld.Controls
         public HeroBar()
         {
             InitializeComponent();
+            Unloaded += HeroBar_Unloaded;
+        }
+
+        private void HeroBar_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Hero = null;
+            FightController = null;
         }
     }
 }
