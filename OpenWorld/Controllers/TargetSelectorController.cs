@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using Kalavarda.Primitives.Units;
-using OpenWorld.Models;
 using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controllers
@@ -42,6 +41,15 @@ namespace OpenWorld.Controllers
 
                         e.Handled = true;
                     }
+                    break;
+
+                case Key.F1:
+                    if (_hero.Target != null)
+                        _hero.Target.IsSelected = false;
+
+                    _hero.Target = _hero;
+
+                    e.Handled = true;
                     break;
 
                 case Key.Escape:

@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:Kalavarda.Primitives.WPF.Controls;assembly=Kalavarda.Primitives.WPF">
     <Border x:Name="_border" BorderThickness="4">
-        <controls:RangeControl x:Name="_hpControl" Width="400" Height="40" MainBrush="Green" Grid.Row="1"/>
+        <StackPanel Orientation="Horizontal">
+            <Border Background="#80000000">
+                <TextBlock x:Name="_tbLevel" Foreground="White" Margin="5" VerticalAlignment="Center"/>
+            </Border>
+            <controls:RangeControl x:Name="_hpControl" Width="400" Height="40" MainBrush="Green" Grid.Row="1"/>
+        </StackPanel>
     </Border>
 </UserControl>

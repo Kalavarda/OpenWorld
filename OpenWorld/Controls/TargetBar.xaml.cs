@@ -1,4 +1,6 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.WPF;
@@ -18,9 +20,32 @@ namespace OpenWorld.Controls
                 if (_target == value)
                     return;
 
+                if (_target is IHasLevel hl)
+                    hl.LevelChanged -= HasLevel_LevelChanged;
+
                 _target = value;
                 _hpControl.Range = _target?.HP;
+
+                if (_target is IHasLevel hasLevel)
+                {
+                    hasLevel.LevelChanged += HasLevel_LevelChanged;
+                    HasLevel_LevelChanged(hasLevel);
+                }
+                else
+                    this.Do(() =>
+                    {
+                        _tbLevel.Visibility = Visibility.Collapsed;
+                    });
             }
+        }
+
+        private void HasLevel_LevelChanged(IHasLevel target)
+        {
+            this.Do(() =>
+            {
+                _tbLevel.Visibility = Visibility.Visible;
+                _tbLevel.Text = target.Level.ToString();
+            });
         }
 
         public FightController FightController

@@ -9,16 +9,18 @@ namespace OpenWorld.Controllers
     {
         private readonly Hero _hero;
         private readonly Map _map;
+        private readonly ILevelMultiplier _levelMultiplier;
 
         private void Award(Mob mob)
         {
-            _hero.XP.Value += 1;
+            _hero.XP.Value += _levelMultiplier.GetValue(1, mob.Level);
         }
 
-        public LootController(Hero hero, Map map)
+        public LootController(Hero hero, Map map, ILevelMultiplier levelMultiplier)
         {
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
             _map = map ?? throw new ArgumentNullException(nameof(map));
+            _levelMultiplier = levelMultiplier ?? throw new ArgumentNullException(nameof(levelMultiplier));
 
             _map.LayerAdded += Map_LayerAdded;
             foreach (var mapLayer in _map.Layers)

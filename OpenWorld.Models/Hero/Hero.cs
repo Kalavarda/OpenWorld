@@ -19,7 +19,7 @@ namespace OpenWorld.Models.Hero
         {
             Bounds = new RoundBounds(Position, 0.75f / 2);
 
-            HP.Max = 10_000;
+            HP.Max = 10;
             HP.SetMax();
 
             _skills = new ISkill[]

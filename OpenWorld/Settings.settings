@@ -14,5 +14,8 @@
     <Setting Name="MobReturnSpeedRatio" Type="System.Single" Scope="Application">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="HeroXpBase" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

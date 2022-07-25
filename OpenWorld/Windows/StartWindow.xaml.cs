@@ -40,7 +40,7 @@ namespace OpenWorld.Windows
             App.Processor.Add(new MobsProcess(game.Hero, App.Processor, _cancellationTokenSource.Token));
             App.Processor.Add(new SpawnsProcess(game.Map, game.Map.Layers.First(), _cancellationTokenSource.Token));
 
-            _lootController = new LootController(game.Hero, game.Map);
+            _lootController = new LootController(game.Hero, game.Map, App.LevelMultiplier);
             _heroXpController = new HeroXpController(game.Hero, App.LevelMultiplier);
 
             ((HeroSkillBinds)App.SkillBinds).Hero = game.Hero; // TODO
