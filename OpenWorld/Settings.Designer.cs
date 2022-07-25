@@ -67,5 +67,14 @@ namespace OpenWorld {
                 return ((int)(this["HeroXpBase"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:05")]
+        public global::System.TimeSpan HeroDeathDuration {
+            get {
+                return ((global::System.TimeSpan)(this["HeroDeathDuration"]));
+            }
+        }
     }
 }

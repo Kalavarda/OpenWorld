@@ -32,11 +32,7 @@ namespace OpenWorld.Controllers
                     var newTarget = _targetSelector.Select();
                     if (newTarget != null)
                     {
-
-                        if (_hero.Target != null)
-                            _hero.Target.IsSelected = false;
-
-                        _hero.Target = newTarget;
+                        Select(newTarget);
                         newTarget.IsSelected = true;
 
                         e.Handled = true;
@@ -44,10 +40,7 @@ namespace OpenWorld.Controllers
                     break;
 
                 case Key.F1:
-                    if (_hero.Target != null)
-                        _hero.Target.IsSelected = false;
-
-                    _hero.Target = _hero;
+                    Select(_hero);
 
                     e.Handled = true;
                     break;
@@ -55,12 +48,19 @@ namespace OpenWorld.Controllers
                 case Key.Escape:
                     if (_hero.Target != null)
                     {
-                        _hero.Target.IsSelected = false;
-                        _hero.Target = null;
+                        Select(null);
                         e.Handled = true;
                     }
                     break;
             }
+        }
+
+        private void Select(Unit newTarget)
+        {
+            if (_hero.Target != null)
+                _hero.Target.IsSelected = false;
+
+            _hero.Target = newTarget;
         }
 
         public void Dispose()

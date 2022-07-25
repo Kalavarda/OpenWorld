@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Fight;
+using Kalavarda.Primitives.WPF.Controllers;
 using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
 using OpenWorld.Controls;
@@ -67,7 +68,7 @@ namespace OpenWorld.Windows
 
         public void ShowToolWindow(UserControl content, int width, int height, string title)
         {
-            new Window
+            var window = new Window
             {
                 Content = content,
                 Owner = this,
@@ -76,7 +77,9 @@ namespace OpenWorld.Windows
                 Height = height,
                 WindowStyle = WindowStyle.ToolWindow,
                 Title = title
-            }.Show();
+            };
+            window.ControlBounds(content.GetType().FullName);
+            window.Show();
         }
 
         private void OnHeroDebugWindowClick(object sender, RoutedEventArgs e)

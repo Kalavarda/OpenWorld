@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Kalavarda.Primitives.Abstract;
+using System.Timers;
 using Kalavarda.Primitives.Units;
-using OpenWorld.Models;
+using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Models.Hero;
 using OpenWorld.Models.MapOjects;
 
@@ -12,6 +12,7 @@ namespace OpenWorld.Controllers
     {
         private readonly Hero _hero;
         private readonly Map _map;
+        private Timer _timer;
 
         public HeroRespawnController(Hero hero, Map map)
         {
@@ -23,6 +24,16 @@ namespace OpenWorld.Controllers
 
         private void Hero_Died(ICreature hero)
         {
+            _timer = new Timer { Interval = Settings.Default.HeroDeathDuration.TotalMilliseconds };
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Start();
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            _timer.Stop();
+            _timer.Dispose();
+
             var nearestSpawn = _map.Layers
                 .SelectMany(l => l.Objects)
                 .OfType<HeroSpawn>()

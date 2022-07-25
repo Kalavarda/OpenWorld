@@ -41,7 +41,7 @@ namespace OpenWorld.Factories
             for (var i = 0; i < 1000; i++)
             {
                 var level = (ushort)rand.Next(1, 100);
-                var r = 10 + 2 * level + 2 * rand.NextSingle();
+                var r = 10 + 3 * level + 3 * rand.NextSingle();
                 var a = 2 * MathF.PI * rand.NextSingle();
                 var spawn = new SpiderSpawn(_levelMultiplier, level);
                 spawn.Position.Set(r * MathF.Cos(a), r * MathF.Sin(a));
