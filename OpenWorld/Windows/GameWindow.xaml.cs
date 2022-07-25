@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.Units.Fight;
+using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Controllers;
 using Kalavarda.Primitives.WPF.Skills;
 using OpenWorld.Controllers;
@@ -47,16 +48,19 @@ namespace OpenWorld.Windows
             _heroBar.FightController = _fightController;
             _targetBar.FightController = _fightController;
 
-            var targetSelector = new TargetSelector(game.Hero, game.Map, 20, _fightController, _gameControl.MousePositionDetector);
-            _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector);
+            var targetSelector = new TargetSelector(game.Hero, game.Map, Settings.Default.TargetMaxDistance, _fightController, _gameControl.MousePositionDetector);
+            _targetSelectorController = new TargetSelectorController(this, game.Hero, targetSelector, _eventAggregator, _fightController);
 
             Unloaded += OnUnloaded;
         }
 
         private void Hero_TargetChanged(Unit oldTarget, Unit newTarget)
         {
-            _targetBar.Visibility = newTarget != null ? Visibility.Visible : Visibility.Collapsed;
-            _targetBar.Target = newTarget;
+            this.Do(() =>
+            {
+                _targetBar.Visibility = newTarget != null ? Visibility.Visible : Visibility.Collapsed;
+                _targetBar.Target = newTarget;
+            });
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

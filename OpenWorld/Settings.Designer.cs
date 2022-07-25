@@ -76,5 +76,14 @@ namespace OpenWorld {
                 return ((global::System.TimeSpan)(this["HeroDeathDuration"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public float TargetMaxDistance {
+            get {
+                return ((float)(this["TargetMaxDistance"]));
+            }
+        }
     }
 }

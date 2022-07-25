@@ -20,5 +20,8 @@
     <Setting Name="HeroDeathDuration" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:00:05</Value>
     </Setting>
+    <Setting Name="TargetMaxDistance" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
