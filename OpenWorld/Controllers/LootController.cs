@@ -21,7 +21,7 @@ namespace OpenWorld.Controllers
             if (_random.Chance(2))
             {
                 var count = (uint)_random.Int(0, (int)_levelMultiplier.GetValue(2, mob.Level));
-                var chitin = new Item(ItemsRepository.Chitin) { Count = count };
+                var chitin = new Item(ItemsRepository.SpiderLegs_Junk) { Count = count };
                 _hero.Bag.Add(chitin);
 
                 if (_random.Chance(2))

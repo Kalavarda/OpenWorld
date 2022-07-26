@@ -25,9 +25,9 @@ namespace OpenWorld
             ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Sword.png")
         };
 
-        public static readonly ItemType Chitin = new(4, "Хитин", ItemQuality.Junk)
+        public static readonly ItemType SpiderLegs_Junk = new(4, "Паучьи лапки", ItemQuality.Junk)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Chitin.jpg")
+            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/SpiderLegs.png")
         };
 
         public static readonly ItemType HpPotion_Junk = new(5, "Снадобье исцеления", ItemQuality.Junk)
@@ -40,7 +40,7 @@ namespace OpenWorld
             WoodSword_Junk,
             WoodSword_Ordinary,
             WoodSword_Good,
-            Chitin,
+            SpiderLegs_Junk,
             HpPotion_Junk
         };
 
