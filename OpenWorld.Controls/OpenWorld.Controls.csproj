@@ -8,6 +8,7 @@
   <ItemGroup>
     <None Remove="Images\Grass.jpg" />
     <None Remove="Images\Hero.png" />
+    <None Remove="Images\Items\Alchemy\HpPotion.png" />
     <None Remove="Images\Items\Chitin.jpg" />
     <None Remove="Images\Items\Sword.png" />
     <None Remove="Images\Spider.png" />
@@ -21,6 +22,7 @@
   <ItemGroup>
     <Resource Include="Images\Grass.jpg" />
     <Resource Include="Images\Hero.png" />
+    <Resource Include="Images\Items\Alchemy\HpPotion.png" />
     <Resource Include="Images\Items\Chitin.jpg" />
     <Resource Include="Images\Items\Sword.png" />
     <Resource Include="Images\Spider.png" />
