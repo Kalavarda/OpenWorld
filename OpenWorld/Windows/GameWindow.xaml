@@ -16,6 +16,9 @@
                 <MenuItem Header="Target..." Click="OnMobDebugWindowClick"/>
                 <MenuItem Header="Debug..." Click="OnDebugWindowClick"/>
             </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="Помощь..." Click="OnHelpClick"/>
+            </MenuItem>
         </Menu>
         
         <controls:GameControl x:Name="_gameControl" Grid.Row="1" ClipToBounds="True"/>

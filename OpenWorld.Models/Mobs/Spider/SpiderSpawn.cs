@@ -1,7 +1,7 @@
 ﻿using System;
 using Kalavarda.Primitives;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 
 namespace OpenWorld.Models.Mobs.Spider
 {
@@ -18,7 +18,7 @@ namespace OpenWorld.Models.Mobs.Spider
 
         protected override Unit CreateUnit()
         {
-            var spider = new Spider(new RangeF { Max = 1.0f }, this) { Level = _level };
+            var spider = new Spider(new RangeF { Max = 2.0f }, this) { Level = _level };
             spider.HP.Max = _levelMultiplier.GetValue(spider.HP.Max, spider.Level);
             spider.HP.SetMax();
             spider.AttackRatio = _levelMultiplier.GetValue(1, spider.Level);

@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.Units.WPF\Kalavarda.Primitives.Units.WPF.csproj" />
     <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj" />
     <ProjectReference Include="..\OpenWorld.Controls\OpenWorld.Controls.csproj" />
     <ProjectReference Include="..\OpenWorld.Models\OpenWorld.Models.csproj" />

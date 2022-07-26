@@ -22,6 +22,7 @@ namespace OpenWorld.Windows
         private readonly FightController _fightController;
         private readonly MapEventAggregator _eventAggregator;
         private readonly KeyBindsController _keyBindsController;
+        private readonly WindowsController _windowsController;
 
         public Game Game { get; }
 
@@ -40,6 +41,7 @@ namespace OpenWorld.Windows
             _keyBindsController = new KeyBindsController(this, App.KeyBinds);
             _skillController = new SkillController(_keyBindsController, App.Processor, App.SkillBinds, game.Hero);
             _fightController = new FightController(_eventAggregator, game.Hero);
+            _windowsController = new WindowsController(_keyBindsController, this, game);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
 
@@ -74,10 +76,11 @@ namespace OpenWorld.Windows
             _fightController.Dispose();
             _eventAggregator.Dispose();
             _keyBindsController.Dispose();
+            _windowsController.Dispose();
             Game.Hero.TargetChanged -= Hero_TargetChanged;
         }
 
-        public void ShowToolWindow(UserControl content, int width, int height, string title)
+        public Window ShowToolWindow(UserControl content, int width, int height, string title)
         {
             var window = new Window
             {
@@ -91,6 +94,7 @@ namespace OpenWorld.Windows
             };
             window.ControlBounds(content.GetType().FullName);
             window.Show();
+            return window;
         }
 
         private void OnHeroDebugWindowClick(object sender, RoutedEventArgs e)
@@ -108,6 +112,13 @@ namespace OpenWorld.Windows
         private void OnDebugWindowClick(object sender, RoutedEventArgs e)
         {
             new DebugWindow { Owner = this }.Show();
+        }
+
+        private void OnHelpClick(object sender, RoutedEventArgs e)
+        {
+            var window = new HelpWindow { Owner = this };
+            window.ControlBounds();
+            window.Show();
         }
     }
 }

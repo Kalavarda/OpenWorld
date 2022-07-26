@@ -3,6 +3,7 @@ using System.Windows.Media;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Fight;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 
 namespace OpenWorld.Controls

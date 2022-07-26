@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Kalavarda.Primitives;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Geometry;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
+using Kalavarda.Primitives.Units.Items;
 
 namespace OpenWorld.Models.Hero
 {
@@ -50,5 +51,7 @@ namespace OpenWorld.Models.Hero
         public event Action<IHasLevel> LevelChanged;
 
         public RangeF XP { get; } = new();
+
+        public ItemContainer Bag { get; } = new ItemContainer();
     }
 }

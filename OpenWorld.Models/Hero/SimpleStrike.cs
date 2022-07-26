@@ -7,7 +7,7 @@ using Kalavarda.Primitives.Units;
 
 namespace OpenWorld.Models.Hero
 {
-    public class SimpleStrike: ISkill, IDistanceSkill, IMakeSounds, IHasKey
+    public class SimpleStrike: ISkill, IDistanceSkill, IMakeSounds
     {
         private const int AttackPower = 1;
 

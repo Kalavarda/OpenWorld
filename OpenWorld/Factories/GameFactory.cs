@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
 using Kalavarda.Primitives;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Map;
 using OpenWorld.Controls;
@@ -27,8 +27,12 @@ namespace OpenWorld.Factories
             var heroMoveSpeed = new RangeF(0, 5_000 / 3600f);
             var map = CreateMap();
 
+            var hero = new Hero(heroMoveSpeed);
+            //hero.Bag.Add(new Item(ItemsRepository.Sword));
+            //hero.Bag.Add(new Item(ItemsRepository.Chitin, 123));
+
             return new Game(
-                new Hero(heroMoveSpeed), 
+                hero, 
                 map);
         }
 
@@ -40,7 +44,7 @@ namespace OpenWorld.Factories
             var spawnsLayer = new MapLayer { IsHidden = true };
             for (var i = 0; i < 1000; i++)
             {
-                var level = (ushort)rand.Next(1, 100);
+                var level = (ushort)rand.Next(1, 50);
                 var r = 10 + 3 * level + 3 * rand.NextSingle();
                 var a = 2 * MathF.PI * rand.NextSingle();
                 var spawn = new SpiderSpawn(_levelMultiplier, level);

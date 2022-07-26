@@ -1,6 +1,7 @@
 ﻿using System.Windows.Media;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units.Fight;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using OpenWorld.Models.Hero;
 

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
+using Kalavarda.Primitives.Units.Items;
 using Kalavarda.Primitives.WPF.Binds;
 using OpenWorld.Factories;
 
@@ -27,6 +28,8 @@ namespace OpenWorld
         internal static IKeyBinds KeyBinds { get; } = new KeyBinds();
 
         internal static ISkillBinds SkillBinds { get; } = new SkillBinds();
+
+        internal static IItemsRepository ItemsRepository { get; } = new ItemsRepository();
 
         static App()
         {

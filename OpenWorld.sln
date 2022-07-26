@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.WPF", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.Units", "Libs\Primitives\Kalavarda.Primitives.Units\Kalavarda.Primitives.Units.csproj", "{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalavarda.Primitives.Units.WPF", "Libs\Primitives\Kalavarda.Primitives.Units.WPF\Kalavarda.Primitives.Units.WPF.csproj", "{5638255E-9326-4E09-A421-35630BFD4E2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5638255E-9326-4E09-A421-35630BFD4E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5638255E-9326-4E09-A421-35630BFD4E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5638255E-9326-4E09-A421-35630BFD4E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5638255E-9326-4E09-A421-35630BFD4E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
 		{86E6F3DD-F8BF-4EDE-81F3-FD5D6A4D9F7D} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
 		{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
+		{5638255E-9326-4E09-A421-35630BFD4E2E} = {F6B0FCDE-7302-45AD-99B1-80B40E07C21B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A357216A-AEDF-4316-B972-3A0F6DE11B0A}

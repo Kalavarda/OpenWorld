@@ -1,6 +1,7 @@
 ﻿using System;
 using Kalavarda.Primitives;
 using Kalavarda.Primitives.Abstract;
+using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controllers

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.EventAggregators;
+using Kalavarda.Primitives.Utils;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
 using OpenWorld.Processes;
@@ -44,7 +45,7 @@ namespace OpenWorld.Windows
             App.Processor.Add(new SpawnsProcess(game.Map, game.Map.Layers.First(), _cancellationTokenSource.Token));
 
             _creatureEventAggregator = new MapEventAggregator(game.Map);
-            _lootController = new LootController(game.Hero, _creatureEventAggregator, App.LevelMultiplier);
+            _lootController = new LootController(game.Hero, _creatureEventAggregator, App.LevelMultiplier, RandomImpl.Instance);
             _heroXpController = new HeroXpController(game.Hero, App.LevelMultiplier);
 
             var window = new GameWindow(game) { Owner = this };
