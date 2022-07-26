@@ -29,8 +29,10 @@ namespace OpenWorld.Factories
             var map = CreateMap();
 
             var hero = new Hero(heroMoveSpeed);
-            //hero.Bag.Add(new Item(ItemsRepository.Sword));
-            hero.Bag.Add(new Item(ItemsRepository.Chitin) { Count = 123 });
+            //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Junk));
+            //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
+            //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
+            //hero.Bag.Add(new Item(ItemsRepository.Chitin) { Count = 123 });
 
             return new Game(
                 hero, 

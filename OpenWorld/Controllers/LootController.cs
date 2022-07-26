@@ -20,12 +20,24 @@ namespace OpenWorld.Controllers
 
             if (_random.Chance(2))
             {
-                var count = (uint)_random.Int(1, 10);
+                var count = (uint)_random.Int(0, (int)_levelMultiplier.GetValue(2, mob.Level));
                 var chitin = new Item(ItemsRepository.Chitin) { Count = count };
                 _hero.Bag.Add(chitin);
 
                 if (_random.Chance(2))
-                    _hero.Bag.Add(new Item(ItemsRepository.Sword));
+                {
+                    if (_random.Chance(2))
+                    {
+                        if (_random.Chance(2))
+                        {
+                            _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
+                        }
+                        else
+                            _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
+                    }
+                    else
+                        _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Junk));
+                }
             }
         }
 

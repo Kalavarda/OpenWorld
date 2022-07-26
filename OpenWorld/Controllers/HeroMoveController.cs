@@ -63,6 +63,9 @@ namespace OpenWorld.Controllers
 
         private void Process(MouseEventArgs e)
         {
+            if (_hero.IsDead)
+                return;
+
             var (x, y) = _mousePositionDetector.GetPosition();
             _hero.MoveTarget.Set(x, y);
             var angle = _hero.Position.AngleTo(x, y);
