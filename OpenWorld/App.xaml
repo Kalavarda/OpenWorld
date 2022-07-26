@@ -70,7 +70,7 @@
             <Setter Property="CornerRadius" Value="2"/>
         </Style>
 
-        <SolidColorBrush x:Key="Back" Color="#80000000"/>
+        <SolidColorBrush x:Key="Back" Color="#101010"/>
 
         <Style TargetType="TextBlock" x:Key="LightText">
             <Setter Property="Foreground" Value="Yellow"/>

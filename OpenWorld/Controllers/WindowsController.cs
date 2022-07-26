@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
-using Kalavarda.Primitives.Units.WPF.Units;
 using Kalavarda.Primitives.WPF.Binds;
+using OpenWorld.Controls;
 using OpenWorld.Models;
 using OpenWorld.Windows;
 
@@ -30,8 +30,8 @@ namespace OpenWorld.Controllers
                 case KeyBinds.Code_Bag:
                     if (_bagWindow == null)
                     {
-                        var control = new ItemContainerControl { ItemContainer = _game.Hero.Bag };
-                        _bagWindow = _gameWindow.ShowToolWindow(control, 100, 200, "Сумка");
+                        var control = new BagControl { Hero = _game.Hero };
+                        _bagWindow = _gameWindow.ShowToolWindow(control, 200, 300, "Сумка");
                         _gameWindow.Focus();
                     }
                     else

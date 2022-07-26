@@ -3,6 +3,7 @@ using System.Windows.Media.Imaging;
 using Kalavarda.Primitives;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
+using Kalavarda.Primitives.Units.Items;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Map;
 using OpenWorld.Controls;
@@ -29,7 +30,7 @@ namespace OpenWorld.Factories
 
             var hero = new Hero(heroMoveSpeed);
             //hero.Bag.Add(new Item(ItemsRepository.Sword));
-            //hero.Bag.Add(new Item(ItemsRepository.Chitin, 123));
+            hero.Bag.Add(new Item(ItemsRepository.Chitin) { Count = 123 });
 
             return new Game(
                 hero, 
