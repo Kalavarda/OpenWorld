@@ -41,7 +41,7 @@ namespace OpenWorld.Windows
             _keyBindsController = new KeyBindsController(this, App.KeyBinds);
             _skillController = new SkillController(_keyBindsController, App.Processor, App.SkillBinds, game.Hero);
             _fightController = new FightController(_eventAggregator, game.Hero);
-            _windowsController = new WindowsController(_keyBindsController, this, game);
+            _windowsController = new WindowsController(_keyBindsController, this, game, App.UseItemController);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
 

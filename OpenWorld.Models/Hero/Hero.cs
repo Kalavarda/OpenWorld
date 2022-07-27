@@ -52,6 +52,6 @@ namespace OpenWorld.Models.Hero
 
         public RangeF XP { get; } = new();
 
-        public ItemContainer Bag { get; } = new ItemContainer();
+        public ItemContainer Bag { get; } = new();
     }
 }

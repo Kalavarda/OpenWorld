@@ -7,6 +7,7 @@ using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
 using Kalavarda.Primitives.WPF.Binds;
+using OpenWorld.Controllers;
 using OpenWorld.Factories;
 
 namespace OpenWorld
@@ -31,6 +32,8 @@ namespace OpenWorld
 
         internal static IItemsRepository ItemsRepository { get; } = new ItemsRepository();
 
+        internal static IUseItemController UseItemController { get; } = new UseItemController(Processor);
+
         static App()
         {
             GameFactory = new GameFactory(LevelMultiplier);
@@ -41,6 +44,11 @@ namespace OpenWorld
             _processorCancellationToken.Cancel();
 
             base.OnExit(e);
+        }
+
+        public static void ShowError(Exception exception)
+        {
+            MessageBox.Show(exception.GetBaseException().Message);
         }
     }
 }

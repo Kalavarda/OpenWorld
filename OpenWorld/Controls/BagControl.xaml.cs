@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using Kalavarda.Primitives.Skills;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
 using OpenWorld.Models.Hero;
 
@@ -6,21 +9,7 @@ namespace OpenWorld.Controls
 {
     public partial class BagControl
     {
-        private Hero _hero;
-
-        public Hero Hero
-        {
-            get => _hero;
-            set
-            {
-                if (_hero == value)
-                    return;
-
-                _hero = value;
-
-                _container.ItemContainer = _hero?.Bag;
-            }
-        }
+        private readonly IUseItemController _useItemController;
 
         public BagControl()
         {
@@ -30,9 +19,16 @@ namespace OpenWorld.Controls
             _container.ContextMenuOpening += OnContextMenuOpening;
         }
 
+        public BagControl(Hero hero, IUseItemController useItemController): this()
+        {
+            _container.ItemContainer = hero.Bag;
+            _useItemController = useItemController ?? throw new ArgumentNullException(nameof(useItemController));
+        }
+
         private void UseDefaultAction(Item item)
         {
-            item.Equals(null);
+            if (item is IUsable usable)
+                _useItemController.Use(usable);
         }
 
         private void OnContextMenuOpening(ContextMenu menu, Item item)

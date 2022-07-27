@@ -33,7 +33,7 @@ namespace OpenWorld.Factories
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
             hero.Bag.Add(new Item(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
-            hero.Bag.Add(new Item(ItemsRepository.HpPotion_Junk) { Count = 3 });
+            //hero.Bag.Add(new Item(ItemsRepository.HpPotion_Junk) { Count = 3 });
 
             return new Game(
                 hero, 
