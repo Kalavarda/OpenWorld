@@ -25,7 +25,7 @@ namespace OpenWorld.Models.Hero
 
             _skills = new ISkill[]
             {
-                new SimpleStrike(this)
+                new SimpleStrike()
             };
             foreach (var skill in _skills.OfType<IMakeSounds>())
                 skill.PlaySound += RaisePlaySound;
@@ -52,6 +52,6 @@ namespace OpenWorld.Models.Hero
 
         public RangeF XP { get; } = new();
 
-        public ItemContainer Bag { get; } = new();
+        public IItemContainer Bag { get; } = new ItemContainer();
     }
 }

@@ -36,12 +36,13 @@ namespace OpenWorld.Windows
             Game = game;
             _gameControl.Game = game;
 
+            var useItemController = new UseItemController(App.Processor, game.Hero);
             _eventAggregator = new MapEventAggregator(game.Map);
             _soundController = new SoundController(_eventAggregator, game.Hero, App.SoundPlayer);
             _keyBindsController = new KeyBindsController(this, App.KeyBinds);
             _skillController = new SkillController(_keyBindsController, App.Processor, App.SkillBinds, game.Hero);
             _fightController = new FightController(_eventAggregator, game.Hero);
-            _windowsController = new WindowsController(_keyBindsController, this, game, App.UseItemController);
+            _windowsController = new WindowsController(_keyBindsController, this, game, useItemController);
 
             _heroRespawnController = new HeroRespawnController(game.Hero, game.Map);
 

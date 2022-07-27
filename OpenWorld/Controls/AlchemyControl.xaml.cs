@@ -18,7 +18,7 @@ namespace OpenWorld.Controls
         {
             try
             {
-                if (Hero.Bag.Pull(ItemsRepository.SpiderLegs_Junk, 10, out var spiderLegs))
+                if (Hero.Bag.TryPull(ItemsRepository.SpiderLegs_Junk, 10, out var spiderLegs))
                 {
                     var hpPotion = new HpPotion(ItemsRepository.HpPotion_Junk);
                     Hero.Bag.Add(hpPotion);

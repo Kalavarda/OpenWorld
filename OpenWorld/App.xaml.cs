@@ -7,7 +7,6 @@ using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
 using Kalavarda.Primitives.WPF.Binds;
-using OpenWorld.Controllers;
 using OpenWorld.Factories;
 
 namespace OpenWorld
@@ -31,8 +30,6 @@ namespace OpenWorld
         internal static ISkillBinds SkillBinds { get; } = new SkillBinds();
 
         internal static IItemsRepository ItemsRepository { get; } = new ItemsRepository();
-
-        internal static IUseItemController UseItemController { get; } = new UseItemController(Processor);
 
         static App()
         {

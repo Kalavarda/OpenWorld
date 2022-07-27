@@ -1,5 +1,7 @@
-﻿using Kalavarda.Primitives.Process;
+﻿using System;
+using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
+using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Items;
 
 namespace OpenWorld.Models.Items
@@ -10,9 +12,12 @@ namespace OpenWorld.Models.Items
         {
         }
 
-        public IProcess Use()
+        public IProcess Use(ISkilled actor)
         {
-            throw new System.NotImplementedException();
+            if (actor is Unit unit)
+                return new ChangeHpProcess(unit, unit, 1f, TimeSpan.FromSeconds(1), 10);
+            else
+                throw new NotSupportedException();
         }
     }
 }

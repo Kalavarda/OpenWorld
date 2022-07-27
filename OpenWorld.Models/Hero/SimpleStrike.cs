@@ -11,31 +11,26 @@ namespace OpenWorld.Models.Hero
     {
         private const int AttackPower = 1;
 
-        private readonly Hero _hero;
         private readonly TimeLimiter _timeLimiter = new(TimeSpan.FromSeconds(1));
-
-        public SimpleStrike(Hero hero)
-        {
-            _hero = hero ?? throw new ArgumentNullException(nameof(hero));
-        }
 
         public string Name => "Простой удар";
 
         public ITimeLimiter TimeLimiter => _timeLimiter;
 
-        public IProcess Use()
+        public IProcess Use(ISkilled actor)
         {
-            _timeLimiter.Do(() =>
-            {
-                var distance = _hero.Position.DistanceTo(_hero.Target.Position);
-                if (distance > MaxDistance)
-                    return;
+            if (actor is Unit unit)
+                _timeLimiter.Do(() =>
+                {
+                    var distance = unit.Position.DistanceTo(unit.Target.Position);
+                    if (distance > MaxDistance)
+                        return;
 
-                var changes = new UnitChanges(-AttackPower);
-                Unit.Apply(_hero, changes, _hero.Target);
+                    var changes = new UnitChanges(-AttackPower);
+                    Unit.Apply(unit, changes, unit.Target);
 
-                PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
-            });
+                    PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
+                });
 
             return null;
         }

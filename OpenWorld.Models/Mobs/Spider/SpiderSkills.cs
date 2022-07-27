@@ -27,7 +27,7 @@ namespace OpenWorld.Models.Mobs.Spider
             _spider = spider ?? throw new ArgumentNullException(nameof(spider));
         }
 
-        public IProcess Use()
+        public IProcess Use(ISkilled actor)
         {
             _timeLimiter.Do(() =>
             {

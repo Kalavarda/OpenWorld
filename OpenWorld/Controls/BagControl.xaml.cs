@@ -27,22 +27,27 @@ namespace OpenWorld.Controls
 
         private void UseDefaultAction(Item item)
         {
-            if (item is IUsable usable)
-                _useItemController.Use(usable);
+            if (_container.ItemContainer.TryPull(item.Type, 1, out var itemInstance))
+                if (itemInstance is IUsable usable)
+                    _useItemController.Use(usable);
         }
 
         private void OnContextMenuOpening(ContextMenu menu, Item item)
         {
             menu.Items.Clear();
-            
-            var miUse = new MenuItem { Header = "Использовать" };
-            miUse.Click += MiUse_Click;
-            menu.Items.Add(miUse);
+
+            if (item is IUsable)
+            {
+                var miUse = new MenuItem { Header = "Использовать" };
+                miUse.Click += MiUse_Click;
+                menu.Items.Add(miUse);
+            }
         }
 
         private void MiUse_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            UseDefaultAction(_container.SelectedItem);
+            if (_container.SelectedItem is IUsable)
+                UseDefaultAction(_container.SelectedItem);
         }
     }
 }
