@@ -18,8 +18,31 @@ namespace OpenWorld.Models.Hero.Skills
 
         public ITimeLimiter TimeLimiter => _timeLimiter;
 
+        public bool CanUse(ISkilled actor)
+        {
+            if (_timeLimiter.Remain > TimeSpan.Zero)
+                return false;
+
+            if (actor is Unit unit)
+            {
+                if (unit.Target == null)
+                    return false;
+
+                var distance = unit.Position.DistanceTo(unit.Target.Position);
+                if (distance > MaxDistance)
+                    return false;
+
+                return true;
+            }
+
+            return false;
+        }
+
         public IProcess Use(ISkilled actor)
         {
+            if (!CanUse(actor))
+                return null;
+
             if (actor is Unit unit)
                 _timeLimiter.Do(() =>
                 {

@@ -3,7 +3,6 @@ using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Items;
-using OpenWorld.Models;
 using OpenWorld.Processes;
 
 namespace OpenWorld.Items
@@ -16,10 +15,15 @@ namespace OpenWorld.Items
         {
         }
 
+        public bool CanUse(ISkilled actor)
+        {
+            return true; // TODO: сделать кд
+        }
+
         public IProcess Use(ISkilled actor)
         {
             if (actor is Unit unit)
-                return new ChangeHpProcess(unit, unit, GetHpDelta(), Period, GetTimes(), this);
+                return new ChangeHpProcess(unit, unit, GetHpDelta(), Period, GetTimes(), BuffsRepository.Healing, this);
             else
                 throw new NotSupportedException();
         }

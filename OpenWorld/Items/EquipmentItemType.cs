@@ -6,7 +6,7 @@ internal class EquipmentItemType : ItemType, IModifierParameters
 {
     public EquipmentType EquipmentType { get; }
 
-    public EquipmentItemType(uint id, string name, ItemQuality quality, EquipmentType equipmentType) : base(id, name, quality)
+    public EquipmentItemType(string name, ItemQuality quality, EquipmentType equipmentType) : base(name, quality)
     {
         EquipmentType = equipmentType;
     }
