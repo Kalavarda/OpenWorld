@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Kalavarda.Primitives.WPF.Binds;
-using OpenWorld.Models.Hero;
+using OpenWorld.Models.Hero.Skills;
 
 namespace OpenWorld
 {

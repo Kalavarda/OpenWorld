@@ -20,6 +20,7 @@
     <None Remove="Resources\Hero\Hero.png" />
     <None Remove="Resources\Hero\SimpleStrike.mp3" />
     <None Remove="Resources\Items\Alchemy\HpPotion.png" />
+    <None Remove="Resources\Items\Armor.png" />
     <None Remove="Resources\Items\SpiderLegs.png" />
     <None Remove="Resources\Items\Sword.png" />
     <None Remove="Resources\Map\Grass.jpg" />
@@ -47,6 +48,7 @@
     <Resource Include="Resources\Grass.jpg" />
     <Resource Include="Resources\Hero\Hero.png" />
     <Resource Include="Resources\Items\Alchemy\HpPotion.png" />
+    <Resource Include="Resources\Items\Armor.png" />
     <Resource Include="Resources\Items\SpiderLegs.png" />
     <Resource Include="Resources\Items\Sword.png" />
     <Resource Include="Resources\Mobs\Spider\Spider.png" />

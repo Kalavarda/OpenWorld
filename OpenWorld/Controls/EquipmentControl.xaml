@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="OpenWorld.Controls.EquipmentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:OpenWorld.Controls"
+             Background="{StaticResource Back}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <controls:EquipmentItemControl x:Name="_armor" Grid.Row="1"/>
+        <controls:EquipmentItemControl x:Name="_necklace" Grid.Column="2"/>
+        <controls:EquipmentItemControl x:Name="_weapon" Grid.Column="1" Grid.Row="2"/>
+    </Grid>
+</UserControl>

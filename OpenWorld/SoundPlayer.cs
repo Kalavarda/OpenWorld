@@ -1,6 +1,7 @@
 ﻿using System;
 using Kalavarda.Primitives.WPF.Sound;
 using OpenWorld.Models.Hero;
+using OpenWorld.Models.Hero.Skills;
 using OpenWorld.Models.Mobs.Spider;
 
 namespace OpenWorld

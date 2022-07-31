@@ -16,6 +16,7 @@ namespace OpenWorld.Controllers
         private readonly IUseItemController _useItemController;
         private Window _bagWindow;
         private Window _alchemyWindow;
+        private Window _equipmentWindow;
 
         public WindowsController(IKeyBindsController keyBindsController, GameWindow gameWindow, Game game, IUseItemController useItemController)
         {
@@ -56,6 +57,20 @@ namespace OpenWorld.Controllers
                     {
                         _alchemyWindow.Close();
                         _alchemyWindow = null;
+                    }
+                    break;
+
+                case KeyBinds.Code_Equipment:
+                    if (_equipmentWindow == null)
+                    {
+                        var control = new EquipmentControl(_game.Hero.Equipment);
+                        _equipmentWindow = _gameWindow.ShowToolWindow(control, 200, 400, "Экипировкая");
+                        _gameWindow.Focus();
+                    }
+                    else
+                    {
+                        _equipmentWindow.Close();
+                        _equipmentWindow = null;
                     }
                     break;
             }

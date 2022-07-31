@@ -6,7 +6,7 @@ using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
 
-namespace OpenWorld.Models.Hero
+namespace OpenWorld.Models.Hero.Skills
 {
     public class SimpleStrike: ISkill, IDistanceSkill, IMakeSounds, IHasName
     {

@@ -8,10 +8,12 @@ using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
+using OpenWorld.Items;
+using OpenWorld.Models.Hero.Skills;
 
 namespace OpenWorld.Models.Hero
 {
-    public class Hero: Unit, IHasLevel
+    public class Hero: Unit, IHasLevel, IChangesModifier
     {
         private readonly ISkill[] _skills;
         private ushort _level = 1;
@@ -53,5 +55,39 @@ namespace OpenWorld.Models.Hero
         public RangeF XP { get; } = new();
 
         public IItemContainer Bag { get; } = new ItemContainer();
+
+        public Equipment Equipment { get; } = new();
+
+        public void Use(IEquipmentItem equipmentItem)
+        {
+            var eqItem = (EquipmentItem)equipmentItem;
+            switch (eqItem.EquipmentType)
+            {
+                case EquipmentType.Weapon:
+                    Equipment.Weapon = equipmentItem;
+                    break;
+
+                case EquipmentType.Armor:
+                    Equipment.Armor = equipmentItem;
+                    break;
+
+                case EquipmentType.Necklace:
+                    Equipment.Necklace = equipmentItem;
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public void ChangeIncome(UnitChanges changes)
+        {
+            Equipment.ChangeIncome(changes);
+        }
+
+        public void ChangeOutcome(UnitChanges changes)
+        {
+            Equipment.ChangeOutcome(changes);
+        }
     }
 }

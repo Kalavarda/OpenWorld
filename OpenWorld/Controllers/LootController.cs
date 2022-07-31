@@ -3,6 +3,7 @@ using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
+using OpenWorld.Items;
 using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Controllers
@@ -30,13 +31,28 @@ namespace OpenWorld.Controllers
                     {
                         if (_random.Chance(2))
                         {
-                            _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
+                            _hero.Bag.Add(new EquipmentItem(ItemsRepository.WoodSword_Good));
                         }
                         else
-                            _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
+                            _hero.Bag.Add(new EquipmentItem(ItemsRepository.WoodSword_Ordinary));
                     }
                     else
-                        _hero.Bag.Add(new Item(ItemsRepository.WoodSword_Junk));
+                        _hero.Bag.Add(new EquipmentItem(ItemsRepository.WoodSword_Junk));
+                }
+
+                if (_random.Chance(2))
+                {
+                    if (_random.Chance(2))
+                    {
+                        if (_random.Chance(2))
+                        {
+                            _hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Good));
+                        }
+                        else
+                            _hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Ordinary));
+                    }
+                    else
+                        _hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Junk));
                 }
             }
         }

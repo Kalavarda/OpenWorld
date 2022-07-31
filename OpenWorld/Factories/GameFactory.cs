@@ -29,9 +29,11 @@ namespace OpenWorld.Factories
 
             var hero = new Hero(heroMoveSpeed);
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Junk));
-            //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
-            //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
-            //hero.Bag.Add(new Item(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
+            //hero.Bag.Add(new EquipmentItem(ItemsRepository.WoodSword_Ordinary));
+            //hero.Bag.Add(new EquipmentItem(ItemsRepository.WoodSword_Good));
+            //hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Junk));
+            //hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Ordinary));
+            //hero.Bag.Add(new EquipmentItem(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
             hero.Bag.Add(new HpPotion(ItemsRepository.HpPotion_Junk) { Count = 3 });
 
             return new Game(
