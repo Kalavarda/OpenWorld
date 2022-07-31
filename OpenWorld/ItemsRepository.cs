@@ -6,33 +6,33 @@ using OpenWorld.Controls;
 
 namespace OpenWorld
 {
-    internal class ItemsRepository: IItemsRepository
+    internal class ItemsRepository: IReadonlyItemsRepository
     {
-        private static readonly Assembly _resourcesAssembly = typeof(HeroControl).Assembly;
+        private static readonly Assembly _resourcesAssembly = typeof(ItemsRepository).Assembly;
 
         public static readonly ItemType WoodSword_Junk = new(1, "Деревянный меч", ItemQuality.Junk)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Sword.png")
+            ImageUri = _resourcesAssembly.GetResourceUri("Resources/Items/Sword.png")
         };
 
         public static readonly ItemType WoodSword_Ordinary = new(2, "Деревянный меч", ItemQuality.Ordinary)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Sword.png")
+            ImageUri = _resourcesAssembly.GetResourceUri("Resources/Items/Sword.png")
         };
 
         public static readonly ItemType WoodSword_Good = new(3, "Деревянный меч", ItemQuality.Good)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Sword.png")
+            ImageUri = _resourcesAssembly.GetResourceUri("Resources/Items/Sword.png")
         };
 
         public static readonly ItemType SpiderLegs_Junk = new(4, "Паучьи лапки", ItemQuality.Junk)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/SpiderLegs.png")
+            ImageUri = _resourcesAssembly.GetResourceUri("Resources/Items/SpiderLegs.png")
         };
 
         public static readonly ItemType HpPotion_Junk = new(5, "Снадобье исцеления", ItemQuality.Junk)
         {
-            ImageUri = _resourcesAssembly.GetResourceUri("Images/Items/Alchemy/HpPotion.png")
+            ImageUri = _resourcesAssembly.GetResourceUri("Resources/Items/Alchemy/HpPotion.png")
         };
 
         private static readonly ItemType[] _types =

@@ -6,26 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Grass.jpg" />
-    <None Remove="Images\Hero.png" />
-    <None Remove="Images\Items\Alchemy\HpPotion.png" />
-    <None Remove="Images\Items\SpiderLegs.png" />
-    <None Remove="Images\Items\Sword.png" />
-    <None Remove="Images\Spider.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj" />
     <ProjectReference Include="..\OpenWorld.Models\OpenWorld.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Images\Grass.jpg" />
-    <Resource Include="Images\Hero.png" />
-    <Resource Include="Images\Items\Alchemy\HpPotion.png" />
-    <Resource Include="Images\Items\SpiderLegs.png" />
-    <Resource Include="Images\Items\Sword.png" />
-    <Resource Include="Images\Spider.png" />
   </ItemGroup>
 
 </Project>

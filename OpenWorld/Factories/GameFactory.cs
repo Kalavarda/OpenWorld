@@ -3,10 +3,9 @@ using System.Windows.Media.Imaging;
 using Kalavarda.Primitives;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
-using Kalavarda.Primitives.Units.Items;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Map;
-using OpenWorld.Controls;
+using OpenWorld.Items;
 using OpenWorld.Models;
 using OpenWorld.Models.Hero;
 using OpenWorld.Models.MapOjects;
@@ -32,8 +31,8 @@ namespace OpenWorld.Factories
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Junk));
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Ordinary));
             //hero.Bag.Add(new Item(ItemsRepository.WoodSword_Good));
-            hero.Bag.Add(new Item(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
-            //hero.Bag.Add(new Item(ItemsRepository.HpPotion_Junk) { Count = 3 });
+            //hero.Bag.Add(new Item(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
+            hero.Bag.Add(new HpPotion(ItemsRepository.HpPotion_Junk) { Count = 3 });
 
             return new Game(
                 hero, 
@@ -43,7 +42,7 @@ namespace OpenWorld.Factories
         private Map CreateMap()
         {
             var rand = new Random();
-            var resAssembly = typeof(HeroControl).Assembly;
+            var resAssembly = typeof(GameFactory).Assembly;
 
             var spawnsLayer = new MapLayer { IsHidden = true };
             for (var i = 0; i < 1000; i++)
@@ -63,7 +62,7 @@ namespace OpenWorld.Factories
             var texture = new MapTexture
             {
                 Size = { Width = 200_000, Height = 200_000 },
-                ImageSource = new BitmapImage(resAssembly.GetResourceUri("Images/Grass.jpg")),
+                ImageSource = new BitmapImage(resAssembly.GetResourceUri("Resources/Grass.jpg")),
                 Scale = 1d / Settings.Default.GameControlScale
             };
             texturesLayer.Add(texture);

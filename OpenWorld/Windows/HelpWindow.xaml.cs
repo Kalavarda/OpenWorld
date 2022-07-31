@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
 using Kalavarda.Primitives.WPF.Binds;
 
 namespace OpenWorld.Windows

@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="OpenWorld.Controls.GameControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="clr-namespace:OpenWorld.Controls;assembly=OpenWorld.Controls"
+             xmlns:controls1="clr-namespace:OpenWorld.Controls"
              Background="#01808080">
     <Grid x:Name="_bk">
         <Canvas x:Name="_canvas">
@@ -12,7 +12,7 @@
                 </TransformGroup>
             </Canvas.RenderTransform>
             <Canvas x:Name="_mapCanvas"/>
-            <controls:HeroControl x:Name="_heroControl"/>
+            <controls1:HeroControl x:Name="_heroControl"/>
         </Canvas>
     </Grid>
 </UserControl>

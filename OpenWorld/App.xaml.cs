@@ -29,7 +29,7 @@ namespace OpenWorld
 
         internal static ISkillBinds SkillBinds { get; } = new SkillBinds();
 
-        internal static IItemsRepository ItemsRepository { get; } = new ItemsRepository();
+        internal static IReadonlyItemsRepository ItemsRepository { get; } = new ItemsRepository();
 
         static App()
         {

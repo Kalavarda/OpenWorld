@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Buffs;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
@@ -36,6 +36,18 @@ namespace OpenWorld.Controls
                     this.Do(() =>
                     {
                         _tbLevel.Visibility = Visibility.Collapsed;
+                    });
+
+                if (_target is IReadonlyHasBuffs hasBuffs)
+                {
+                    _buffsControl.HasBuffs = hasBuffs;
+                    _buffsControl.Visibility = Visibility.Visible;
+                }
+                else
+                    this.Do(() =>
+                    {
+                        _buffsControl.HasBuffs = null;
+                        _buffsControl.Visibility = Visibility.Collapsed;
                     });
             }
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using Kalavarda.Primitives.WPF.Sound;
-using OpenWorld.Models;
 using OpenWorld.Models.Hero;
 using OpenWorld.Models.Mobs.Spider;
 
@@ -13,7 +12,7 @@ namespace OpenWorld
             switch (soundKey)
             {
                 case nameof(SpiderAttack):
-                    return @"Spider\Bite.mp3";
+                    return @"Mobs\Spider\Bite.mp3";
 
                 case nameof(Hero) + nameof(SimpleStrike):
                     return @"Hero\SimpleStrike.mp3";

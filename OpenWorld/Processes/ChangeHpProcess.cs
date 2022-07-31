@@ -1,9 +1,11 @@
 ﻿using System;
 using Kalavarda.Primitives;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Buffs;
 
-namespace OpenWorld.Models
+namespace OpenWorld.Processes
 {
     public class ChangeHpProcess : IProcess
     {
@@ -11,16 +13,19 @@ namespace OpenWorld.Models
         private readonly Unit _targetUnit;
         private readonly float _delta;
         private readonly ushort _times;
+        private readonly IHasName _skillOrItemName;
 
         private readonly TimeLimiter _timeLimiter;
         private ushort _count;
+        private Buff _buff;
 
-        public ChangeHpProcess(Unit fromUnit, Unit targetUnit, float delta, TimeSpan interval, ushort times)
+        public ChangeHpProcess(Unit fromUnit, Unit targetUnit, float delta, TimeSpan interval, ushort times, IHasName skillOrItemName)
         {
             _fromUnit = fromUnit ?? throw new ArgumentNullException(nameof(fromUnit));
             _targetUnit = targetUnit ?? throw new ArgumentNullException(nameof(targetUnit));
             _delta = delta;
             _times = times;
+            _skillOrItemName = skillOrItemName;
             _timeLimiter = new TimeLimiter(interval);
         }
 
@@ -30,7 +35,14 @@ namespace OpenWorld.Models
         {
             _timeLimiter.Do(() =>
             {
-                Unit.Apply(_fromUnit, new UnitChanges(_delta), _targetUnit);
+                if (_buff == null)
+                    if (_targetUnit is IHasBuffs hasBuffs)
+                    {
+                        _buff = new Buff(BuffsRepository.Healing);
+                        hasBuffs.Add(_buff);
+                    }
+
+                Unit.Apply(_fromUnit, new UnitChanges(_delta, _skillOrItemName), _targetUnit);
 
                 _count++;
                 if (_count == _times)
@@ -40,6 +52,10 @@ namespace OpenWorld.Models
 
         public void Stop()
         {
+            if (_buff != null)
+                if (_targetUnit is IHasBuffs hasBuffs)
+                    hasBuffs.Remove(_buff);
+
             Completed?.Invoke(this);
         }
     }

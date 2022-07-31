@@ -1,9 +1,9 @@
 ﻿<UserControl x:Class="OpenWorld.Controls.BagControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:units="clr-namespace:Kalavarda.Primitives.Units.WPF.Units;assembly=Kalavarda.Primitives.Units.WPF"
+             xmlns:items="clr-namespace:Kalavarda.Primitives.Units.WPF.Items;assembly=Kalavarda.Primitives.Units.WPF"
              Background="{StaticResource Back}">
     <Grid>
-        <units:ItemContainerControl x:Name="_container"/>
+        <items:ItemContainerControl x:Name="_container"/>
     </Grid>
 </UserControl>

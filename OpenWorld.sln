@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld", "OpenWorld\Open
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld.Models", "OpenWorld.Models\OpenWorld.Models.csproj", "{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld.Controls", "OpenWorld.Controls\OpenWorld.Controls.csproj", "{1F50F4F0-730C-4529-AA62-066312180FC7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F6B0FCDE-7302-45AD-99B1-80B40E07C21B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives", "Libs\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj", "{7717B093-1CC6-4A75-A27A-72D719D2F47E}"
@@ -17,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.WPF", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.Units", "Libs\Primitives\Kalavarda.Primitives.Units\Kalavarda.Primitives.Units.csproj", "{8B0E6F34-6524-4BB2-84D3-2D8812B6EE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalavarda.Primitives.Units.WPF", "Libs\Primitives\Kalavarda.Primitives.Units.WPF\Kalavarda.Primitives.Units.WPF.csproj", "{5638255E-9326-4E09-A421-35630BFD4E2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives.Units.WPF", "Libs\Primitives\Kalavarda.Primitives.Units.WPF\Kalavarda.Primitives.Units.WPF.csproj", "{5638255E-9326-4E09-A421-35630BFD4E2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F50F4F0-730C-4529-AA62-066312180FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F50F4F0-730C-4529-AA62-066312180FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F50F4F0-730C-4529-AA62-066312180FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F50F4F0-730C-4529-AA62-066312180FC7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Release|Any CPU.ActiveCfg = Release|Any CPU

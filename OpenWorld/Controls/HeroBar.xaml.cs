@@ -1,5 +1,4 @@
 ﻿using System.Windows.Media;
-using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
@@ -26,6 +25,7 @@ namespace OpenWorld.Controls
                 _hero = value;
                 _hpControl.Range = _hero?.HP;
                 _xpControl.Range = _hero?.XP;
+                _buffsControl.HasBuffs = _hero;
 
                 if (_hero != null)
                 {

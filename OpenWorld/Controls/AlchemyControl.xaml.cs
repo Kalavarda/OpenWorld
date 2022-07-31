@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
+using OpenWorld.Items;
 using OpenWorld.Models.Hero;
-using OpenWorld.Models.Items;
 
 namespace OpenWorld.Controls
 {
