@@ -1,7 +1,7 @@
 ﻿using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Geometry;
 
-namespace OpenWorld.Models.MapOjects
+namespace OpenWorld.Models.Hero
 {
     public class HeroSpawn: IMapObject
     {

@@ -4,7 +4,6 @@ using System.Timers;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Models.Hero;
-using OpenWorld.Models.MapOjects;
 
 namespace OpenWorld.Controllers
 {

@@ -16,14 +16,17 @@
   <ItemGroup>
     <None Remove="Resources\Bite.mp3" />
     <None Remove="Resources\Buffs\Healing.png" />
+    <None Remove="Resources\Buffs\Poisoning.png" />
     <None Remove="Resources\Grass.jpg" />
     <None Remove="Resources\Hero\Hero.png" />
     <None Remove="Resources\Hero\SimpleStrike.mp3" />
     <None Remove="Resources\Items\Alchemy\HpPotion.png" />
     <None Remove="Resources\Items\Armor.png" />
+    <None Remove="Resources\Items\Necklace.png" />
     <None Remove="Resources\Items\SpiderLegs.png" />
     <None Remove="Resources\Items\Sword.png" />
     <None Remove="Resources\Map\Grass.jpg" />
+    <None Remove="Resources\Map\Resources\Grass.png" />
     <None Remove="Resources\Mobs\Spider\Bite.mp3" />
     <None Remove="Resources\Mobs\Spider\Spider.png" />
   </ItemGroup>
@@ -40,17 +43,19 @@
   <ItemGroup>
     <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.Units.WPF\Kalavarda.Primitives.Units.WPF.csproj" />
     <ProjectReference Include="..\Libs\Primitives\Kalavarda.Primitives.WPF\Kalavarda.Primitives.WPF.csproj" />
-    <ProjectReference Include="..\OpenWorld.Models\OpenWorld.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Buffs\Healing.png" />
+    <Resource Include="Resources\Buffs\Poisoning.png" />
     <Resource Include="Resources\Grass.jpg" />
     <Resource Include="Resources\Hero\Hero.png" />
     <Resource Include="Resources\Items\Alchemy\HpPotion.png" />
     <Resource Include="Resources\Items\Armor.png" />
+    <Resource Include="Resources\Items\Necklace.png" />
     <Resource Include="Resources\Items\SpiderLegs.png" />
     <Resource Include="Resources\Items\Sword.png" />
+    <Resource Include="Resources\Map\Resources\Grass.png" />
     <Resource Include="Resources\Mobs\Spider\Spider.png" />
   </ItemGroup>
 

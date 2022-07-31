@@ -8,7 +8,6 @@ using Kalavarda.Primitives.WPF.Map;
 using OpenWorld.Items;
 using OpenWorld.Models;
 using OpenWorld.Models.Hero;
-using OpenWorld.Models.MapOjects;
 using OpenWorld.Models.Mobs.Spider;
 
 namespace OpenWorld.Factories
@@ -34,7 +33,7 @@ namespace OpenWorld.Factories
             //hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Junk));
             //hero.Bag.Add(new EquipmentItem(ItemsRepository.Armor_Ordinary));
             //hero.Bag.Add(new EquipmentItem(ItemsRepository.SpiderLegs_Junk) { Count = 123 });
-            hero.Bag.Add(new HpPotion(ItemsRepository.HpPotion_Junk) { Count = 3 });
+            hero.Bag.Add(new HpPotion(ItemsRepository.HpPotion_Junk) { Count = 1 });
 
             return new Game(
                 hero, 

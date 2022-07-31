@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld", "OpenWorld\OpenWorld.csproj", "{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWorld.Models", "OpenWorld.Models\OpenWorld.Models.csproj", "{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{F6B0FCDE-7302-45AD-99B1-80B40E07C21B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives", "Libs\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj", "{7717B093-1CC6-4A75-A27A-72D719D2F47E}"
@@ -27,10 +25,6 @@ Global
 		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C2D8762-5015-4FD0-A733-48F58BD4DC6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0012983E-FF64-4AA2-A318-5CE6FE20DC5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7717B093-1CC6-4A75-A27A-72D719D2F47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
