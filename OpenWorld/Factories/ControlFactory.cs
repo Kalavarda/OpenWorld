@@ -15,7 +15,7 @@ namespace OpenWorld.Factories
             if (mapObject is Mob mob)
                 return new MobControl { Mob = mob };
 
-            if (mapObject is Spawn)
+            if (mapObject is SpawnBase)
                 return null;
 
             if (mapObject is MapTexture mapTexture)

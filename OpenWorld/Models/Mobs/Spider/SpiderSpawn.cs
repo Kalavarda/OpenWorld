@@ -1,22 +1,23 @@
 ﻿using System;
 using Kalavarda.Primitives;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Interfaces;
 
 namespace OpenWorld.Models.Mobs.Spider
 {
-    public class SpiderSpawn: Spawn
+    public class SpiderSpawn: SpawnBase
     {
         private readonly ILevelMultiplier _levelMultiplier;
         private readonly ushort _level;
 
-        public SpiderSpawn(ILevelMultiplier levelMultiplier, ushort level) : base(1, TimeSpan.FromSeconds(30))
+        public SpiderSpawn(ILevelMultiplier levelMultiplier, ushort level) : base(1, TimeSpan.FromSeconds(30), 1)
         {
             _levelMultiplier = levelMultiplier ?? throw new ArgumentNullException(nameof(levelMultiplier));
             _level = level;
         }
 
-        protected override Unit CreateUnit()
+        protected override IMapObject CreateMapObject()
         {
             var spider = new Spider(new RangeF { Max = 2.0f }, this) { Level = _level };
             spider.HP.Max = _levelMultiplier.GetValue(spider.HP.Max, spider.Level);

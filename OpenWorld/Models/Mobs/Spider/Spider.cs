@@ -13,7 +13,7 @@ namespace OpenWorld.Models.Mobs.Spider
     {
         private readonly ISkill[] _skills;
 
-        public Spider(RangeF moveSpeed, Spawn spawn) : base(moveSpeed, spawn)
+        public Spider(RangeF moveSpeed, SpawnBase spawn) : base(moveSpeed, spawn)
         {
             Bounds = new RoundBounds(Position, 0.3f);
             

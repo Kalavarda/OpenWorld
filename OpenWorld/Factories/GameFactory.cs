@@ -43,21 +43,23 @@ namespace OpenWorld.Factories
         private Map CreateMap()
         {
             var rand = new Random();
+
+            var map = new Map();
+
+            var texturesLayer = CreateTexturesLayer();
+            map.Add(texturesLayer);
+
+            map.Add(new MapLayer());
+
+            var spawnsLayer = CreateSpawnsLayer(rand);
+            map.Add(spawnsLayer);
+
+            return map;
+        }
+
+        private static MapLayer CreateTexturesLayer()
+        {
             var resAssembly = typeof(GameFactory).Assembly;
-
-            var spawnsLayer = new MapLayer { IsHidden = true };
-            for (var i = 0; i < 1000; i++)
-            {
-                var level = (ushort)rand.Next(1, 50);
-                var r = 10 + 3 * level + 3 * rand.NextSingle();
-                var a = 2 * MathF.PI * rand.NextSingle();
-                var spawn = new SpiderSpawn(_levelMultiplier, level);
-                spawn.Position.Set(r * MathF.Cos(a), r * MathF.Sin(a));
-                spawnsLayer.Add(spawn);
-            }
-
-            var heroRespawn = new HeroSpawn();
-            spawnsLayer.Add(heroRespawn);
 
             var texturesLayer = new MapLayer();
             var texture = new MapTexture
@@ -67,12 +69,25 @@ namespace OpenWorld.Factories
                 Scale = 1d / Settings.Default.GameControlScale
             };
             texturesLayer.Add(texture);
+            return texturesLayer;
+        }
 
-            var map = new Map();
-            map.Add(texturesLayer);
-            map.Add(new MapLayer());
-            map.Add(spawnsLayer);
-            return map;
+        private MapLayer CreateSpawnsLayer(Random rand)
+        {
+            var spawnsLayer = new MapLayer { IsHidden = true };
+            for (var i = 0; i < 200; i++)
+            {
+                var level = (ushort)rand.Next(1, 10);
+                var r = 10 + 3 * level + 3 * rand.NextSingle();
+                var a = 2 * MathF.PI * rand.NextSingle();
+                var spawn = new SpiderSpawn(_levelMultiplier, level);
+                spawn.Position.Set(r * MathF.Cos(a), r * MathF.Sin(a));
+                spawnsLayer.Add(spawn);
+            }
+
+            var heroRespawn = new HeroSpawn();
+            spawnsLayer.Add(heroRespawn);
+            return spawnsLayer;
         }
     }
 }

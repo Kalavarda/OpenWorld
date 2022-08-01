@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
@@ -82,16 +83,17 @@ namespace OpenWorld.Controls
                 var positionController = new PositionController(control, mapObject);
                 _positionControllers.Add(mapObject, positionController);
 
-                if (mapObject is Unit unit)
-                    unit.Disposing += Unit_Disposing;
+                if (mapObject is IHasDispose hasDispose)
+                    hasDispose.Disposing += Unit_Disposing;
             });
         }
 
-        private void Unit_Disposing(Unit unit)
+        private void Unit_Disposing(IHasDispose hasDispose)
         {
-            unit.Disposing -= Unit_Disposing;
+            hasDispose.Disposing -= Unit_Disposing;
             this.Do(() =>
             {
+                var unit = (Unit)hasDispose;
                 var control = _userControls[unit];
                 _mapCanvas.Children.Remove(control);
                 _userControls.Remove(unit);
