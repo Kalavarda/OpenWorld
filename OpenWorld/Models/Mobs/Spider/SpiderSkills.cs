@@ -5,6 +5,7 @@ using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Processes;
 
 namespace OpenWorld.Models.Mobs.Spider
@@ -37,11 +38,11 @@ namespace OpenWorld.Models.Mobs.Spider
             _timeLimiter.Do(() =>
             {
                 var changes = new UnitChanges(-AttackPower, this);
-                Unit.Apply(_spider, changes, _spider.Target);
+                Unit.Apply(_spider, changes, (IFighter)_spider.Target);
 
                 PlaySound?.Invoke(nameof(SpiderAttack));
 
-                process = new ChangeHpProcess(_spider, _spider.Target, -PoisoingPower, TimeSpan.FromSeconds(1), 10, BuffsRepository.Poisoning, this);
+                process = new ChangeHpProcess(_spider, (IFighter)_spider.Target, -PoisoingPower, TimeSpan.FromSeconds(1), 10, BuffsRepository.Poisoning, this);
             });
 
             return process;

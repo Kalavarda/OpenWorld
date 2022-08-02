@@ -13,7 +13,7 @@ using OpenWorld.Models.Hero.Skills;
 
 namespace OpenWorld.Models.Hero
 {
-    public class Hero: Unit, IHasLevel, IChangesModifier
+    public class Hero: Unit, IHasLevel, IChangesModifier, IFighter
     {
         private readonly ISkill[] _skills;
         private ushort _level = 1;
@@ -36,6 +36,8 @@ namespace OpenWorld.Models.Hero
         public override BoundsF Bounds { get; }
 
         public override IEnumerable<ISkill> Skills => _skills;
+
+        public string Name => nameof(Hero);
 
         public ushort Level
         {

@@ -64,10 +64,11 @@ namespace OpenWorld.Controllers
             }
         }
 
-        private void Hero_NegativeSkillReceived(Unit from, Unit to)
+        private void Hero_NegativeSkillReceived(IFighter from, IFighter to)
         {
             if (_hero.Target == null)
-                Select(from);
+                if (from is Unit unit)
+                    Select(unit);
         }
 
         private void Mob_Died(ICreature creature)

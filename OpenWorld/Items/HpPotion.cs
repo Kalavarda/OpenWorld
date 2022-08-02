@@ -2,6 +2,7 @@
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.Units.Items;
 using OpenWorld.Processes;
 
@@ -22,7 +23,7 @@ namespace OpenWorld.Items
 
         public IProcess Use(ISkilled actor)
         {
-            if (actor is Unit unit)
+            if (actor is IFighter unit)
                 return new ChangeHpProcess(unit, unit, GetHpDelta(), Period, GetTimes(), BuffsRepository.Healing, this);
             else
                 throw new NotSupportedException();

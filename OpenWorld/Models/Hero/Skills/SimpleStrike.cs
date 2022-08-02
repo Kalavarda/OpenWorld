@@ -5,6 +5,7 @@ using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Skills;
 using Kalavarda.Primitives.Sound;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 
 namespace OpenWorld.Models.Hero.Skills
 {
@@ -43,15 +44,15 @@ namespace OpenWorld.Models.Hero.Skills
             if (!CanUse(actor))
                 return null;
 
-            if (actor is Unit unit)
+            if (actor is Hero hero)
                 _timeLimiter.Do(() =>
                 {
-                    var distance = unit.Position.DistanceTo(unit.Target.Position);
+                    var distance = hero.Position.DistanceTo(hero.Target.Position);
                     if (distance > MaxDistance)
                         return;
 
                     var changes = new UnitChanges(-AttackPower, this);
-                    Unit.Apply(unit, changes, unit.Target);
+                    Unit.Apply(hero, changes, (IFighter)hero.Target);
 
                     PlaySound?.Invoke(nameof(Hero) + nameof(SimpleStrike));
                 });
