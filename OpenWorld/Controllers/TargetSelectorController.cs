@@ -1,6 +1,6 @@
 ﻿using System;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Geometry;
-using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF.Binds;
@@ -12,12 +12,12 @@ namespace OpenWorld.Controllers
     {
         private readonly Hero _hero;
         private readonly ITargetSelector _targetSelector;
-        private readonly ICreatureEvents _creatureAggregator;
+        private readonly ISelectableEvents _creatureAggregator;
         private readonly IFightController _fightController;
         private readonly IKeyBindsController _keyBindsController;
         private static readonly float TargetMaxDistance = Settings.Default.TargetMaxDistance;
 
-        public TargetSelectorController(Hero hero, ITargetSelector targetSelector, ICreatureEvents creatureAggregator, IFightController fightController, IKeyBindsController keyBindsController)
+        public TargetSelectorController(Hero hero, ITargetSelector targetSelector, ISelectableEvents creatureAggregator, IFightController fightController, IKeyBindsController keyBindsController)
         {
             _hero = hero ?? throw new ArgumentNullException(nameof(hero));
             _targetSelector = targetSelector ?? throw new ArgumentNullException(nameof(targetSelector));
@@ -25,7 +25,7 @@ namespace OpenWorld.Controllers
             _fightController = fightController ?? throw new ArgumentNullException(nameof(fightController));
             _keyBindsController = keyBindsController ?? throw new ArgumentNullException(nameof(keyBindsController));
 
-            _creatureAggregator.Died += Mob_Died;
+            _creatureAggregator.IsSelectableChanged += Mob_IsSelectableChanged;
             _hero.NegativeSkillReceived += Hero_NegativeSkillReceived;
             _hero.Position.Changed += HeroPosition_Changed;
             _keyBindsController.BindActivated += KeyBindsController_BindActivated;
@@ -38,10 +38,7 @@ namespace OpenWorld.Controllers
                 case KeyBinds.Code_SelectTarget:
                     var newTarget = _targetSelector.Select();
                     if (newTarget != null)
-                    {
                         Select(newTarget);
-                        newTarget.IsSelected = true;
-                    }
                     break;
 
                 case KeyBinds.Code_SelectSelf:
@@ -56,9 +53,9 @@ namespace OpenWorld.Controllers
 
         private void HeroPosition_Changed(PointF pos)
         {
-            if (_hero.Target != null)
+            if (_hero.Target is IHasPosition hasPosition)
             {
-                var distance = _hero.Position.DistanceTo(_hero.Target.Position);
+                var distance = _hero.Position.DistanceTo(hasPosition.Position);
                 if (distance > TargetMaxDistance)
                     Select(null);
             }
@@ -67,35 +64,30 @@ namespace OpenWorld.Controllers
         private void Hero_NegativeSkillReceived(IFighter from, IFighter to)
         {
             if (_hero.Target == null)
-                if (from is Unit unit)
-                    Select(unit);
+                if (from is ISelectable { IsSelectable: true } selectable)
+                    Select(selectable);
         }
 
-        private void Mob_Died(ICreature creature)
+        private void Mob_IsSelectableChanged(ISelectable selectable)
         {
-            if (_hero.Target == creature)
-            {
-                var newTarget = _fightController.CurrentFight != null
-                    ? _targetSelector.Select(true)
-                    : null;
-                Select(newTarget);
-            }
+            if (!selectable.IsSelectable)
+                if (_hero.Target == selectable)
+                {
+                    var newTarget = _fightController.CurrentFight != null
+                        ? _targetSelector.Select(true)
+                        : null;
+                    Select(newTarget);
+                }
         }
 
-        private void Select(Unit newTarget)
+        private void Select(ISelectable newTarget)
         {
-            if (_hero.Target != null)
-                _hero.Target.IsSelected = false;
-
             _hero.Target = newTarget;
-
-            if (newTarget != null)
-                newTarget.IsSelected = true;
         }
 
         public void Dispose()
         {
-            _creatureAggregator.Died -= Mob_Died;
+            _creatureAggregator.IsSelectableChanged -= Mob_IsSelectableChanged;
             _hero.NegativeSkillReceived -= Hero_NegativeSkillReceived;
             _hero.Position.Changed -= HeroPosition_Changed;
             _keyBindsController.BindActivated -= KeyBindsController_BindActivated;

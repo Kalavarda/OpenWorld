@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using Kalavarda.Primitives.Process;
 using Kalavarda.Primitives.Units;
-using OpenWorld.Models;
+using Kalavarda.Primitives.Units.Interfaces;
 using OpenWorld.Models.Hero;
 
 namespace OpenWorld.Processes
@@ -58,8 +58,13 @@ namespace OpenWorld.Processes
                         if (mob.Position.DistanceTo(mob.Spawn.Position) > mob.MaxDistanceFromSpawn)
                             mob.State = Mob.MobState.Returning;
 
-                        if (mob.Target == null || mob.Target.HP.IsMin)
-                            mob.State = Mob.MobState.Returning;
+                        switch (mob.Target)
+                        {
+                            case null:
+                            case ICreature { IsDead: true }:
+                                mob.State = Mob.MobState.Returning;
+                                break;
+                        }
 
                         break;
 

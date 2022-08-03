@@ -1,5 +1,7 @@
 ﻿using System;
+using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using OpenWorld.Models;
 
@@ -29,11 +31,12 @@ namespace OpenWorld.Controls
             });
         }
 
-        private void Hero_TargetChanged(Unit oldTarget, Unit newTarget)
+        private void Hero_TargetChanged(ISelectable oldTarget, ISelectable newTarget)
         {
             if (oldTarget != null)
             {
-                oldTarget.Position.Changed -= Position_Changed;
+                if (oldTarget is IHasPosition hasPosition)
+                    hasPosition.Position.Changed -= Position_Changed;
                 
                 if (oldTarget is Mob mob)
                     mob.StateChanged -= Mob_StateChanged;
@@ -41,8 +44,11 @@ namespace OpenWorld.Controls
 
             if (newTarget != null)
             {
-                newTarget.Position.Changed += Position_Changed;
-                Position_Changed(newTarget.Position);
+                if (oldTarget is IHasPosition hasPosition)
+                {
+                    hasPosition.Position.Changed += Position_Changed;
+                    Position_Changed(hasPosition.Position);
+                }
 
                 if (newTarget is Mob mob)
                 {

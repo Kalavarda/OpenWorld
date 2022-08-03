@@ -1,0 +1,5 @@
+﻿<UserControl x:Class="OpenWorld.Controls.TargetControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border BorderThickness="0.02" BorderBrush="Red" x:Name="_border"/>
+</UserControl>

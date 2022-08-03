@@ -13,7 +13,7 @@ using OpenWorld.Models.Hero.Skills;
 
 namespace OpenWorld.Models.Hero
 {
-    public class Hero: Unit, IHasLevel, IChangesModifier, IFighter
+    public class Hero: Unit, IHasLevel, IChangesModifier, IFighter, ISelectable
     {
         private readonly ISkill[] _skills;
         private ushort _level = 1;
@@ -91,5 +91,9 @@ namespace OpenWorld.Models.Hero
         {
             Equipment.ChangeOutcome(changes);
         }
+
+        public bool IsSelectable => true;
+        
+        public event Action<ISelectable> IsSelectableChanged;
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.EventAggregators;
 using Kalavarda.Primitives.Units.Fight;
+using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Binds;
 using Kalavarda.Primitives.WPF.Controllers;
@@ -54,13 +55,13 @@ namespace OpenWorld.Windows
             _heroBar.FightController = _fightController;
             _targetBar.FightController = _fightController;
 
-            var targetSelector = new TargetSelector(game.Hero, game.Map, Settings.Default.TargetMaxDistance, _fightController, _gameControl.MousePositionDetector);
+            var targetSelector = new TargetSelector(game.Map, Settings.Default.TargetMaxDistance, _gameControl.MousePositionDetector);
             _targetSelectorController = new TargetSelectorController(game.Hero, targetSelector, _eventAggregator, _fightController, _keyBindsController);
 
             Unloaded += OnUnloaded;
         }
 
-        private void Hero_TargetChanged(Unit oldTarget, Unit newTarget)
+        private void Hero_TargetChanged(ISelectable oldTarget, ISelectable newTarget)
         {
             this.Do(() =>
             {
@@ -114,7 +115,7 @@ namespace OpenWorld.Windows
 
         private void OnDebugWindowClick(object sender, RoutedEventArgs e)
         {
-            new DebugWindow { Owner = this }.Show();
+            new DebugWindow(_gameControl.MousePositionDetector) { Owner = this }.Show();
         }
 
         private void OnHelpClick(object sender, RoutedEventArgs e)

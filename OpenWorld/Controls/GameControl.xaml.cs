@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using Kalavarda.Primitives.Abstract;
 using Kalavarda.Primitives.Units;
-using Kalavarda.Primitives.Units.Interfaces;
 using Kalavarda.Primitives.WPF;
 using Kalavarda.Primitives.WPF.Controllers;
 using OpenWorld.Controllers;
@@ -46,7 +45,7 @@ namespace OpenWorld.Controls
 
                 if (_game != null)
                 {
-                    MousePositionDetector = new MousePositionDetector(_bk);
+                    MousePositionDetector = new MousePositionDetector(_bk, _game.Hero);
                     _heroMoveController = new HeroMoveController(_bk, _game.Hero, MousePositionDetector);
                     _heroControl.Hero = _game.Hero;
                     _heroPositionController = new PositionController(_heroControl, _game.Hero);
@@ -56,6 +55,8 @@ namespace OpenWorld.Controls
                     _game.Map.LayerAdded += Map_LayerAdded;
                     foreach (var mapLayer in _game.Map.Layers)
                         Map_LayerAdded(mapLayer);
+
+                    _targetControl.Hero = _game.Hero;
                 }
             }
         }

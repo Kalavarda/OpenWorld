@@ -10,12 +10,14 @@ namespace OpenWorld.Controllers
         private static readonly float GameControlScale = (float)Settings.Default.GameControlScale;
 
         private readonly FrameworkElement _frameworkElement;
+        private readonly IHasPosition _hero;
         private float x;
         private float y;
 
-        public MousePositionDetector(FrameworkElement frameworkElement)
+        public MousePositionDetector(FrameworkElement frameworkElement, IHasPosition hero)
         {
             _frameworkElement = frameworkElement ?? throw new ArgumentNullException(nameof(frameworkElement));
+            _hero = hero ?? throw new ArgumentNullException(nameof(hero));
 
             _frameworkElement.MouseMove += FrameworkElement_MouseMove;
         }
@@ -26,8 +28,8 @@ namespace OpenWorld.Controllers
             var h = _frameworkElement.ActualHeight / 2;
 
             var mousePos = e.GetPosition(_frameworkElement);
-            x = (float)(mousePos.X - w) * GameControlScale;
-            y = (float)(mousePos.Y - h) * GameControlScale;
+            x = (float)(mousePos.X - w) / GameControlScale + _hero.Position.X;
+            y = (float)(mousePos.Y - h) / GameControlScale + _hero.Position.Y;
         }
 
         public (float, float) GetPosition()

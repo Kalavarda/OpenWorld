@@ -79,7 +79,7 @@ namespace OpenWorld {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
         public float TargetMaxDistance {
             get {
                 return ((float)(this["TargetMaxDistance"]));

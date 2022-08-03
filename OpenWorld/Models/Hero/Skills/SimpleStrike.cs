@@ -29,9 +29,12 @@ namespace OpenWorld.Models.Hero.Skills
                 if (unit.Target == null)
                     return false;
 
-                var distance = unit.Position.DistanceTo(unit.Target.Position);
-                if (distance > MaxDistance)
-                    return false;
+                if (unit.Target is IHasPosition hasPosition)
+                {
+                    var distance = unit.Position.DistanceTo(hasPosition.Position);
+                    if (distance > MaxDistance)
+                        return false;
+                }
 
                 return true;
             }
@@ -47,9 +50,12 @@ namespace OpenWorld.Models.Hero.Skills
             if (actor is Hero hero)
                 _timeLimiter.Do(() =>
                 {
-                    var distance = hero.Position.DistanceTo(hero.Target.Position);
-                    if (distance > MaxDistance)
-                        return;
+                    if (hero.Target is IHasPosition hasPosition)
+                    {
+                        var distance = hero.Position.DistanceTo(hasPosition.Position);
+                        if (distance > MaxDistance)
+                            return;
+                    }
 
                     var changes = new UnitChanges(-AttackPower, this);
                     Unit.Apply(hero, changes, (IFighter)hero.Target);

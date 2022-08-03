@@ -13,6 +13,7 @@
             </Canvas.RenderTransform>
             <Canvas x:Name="_mapCanvas"/>
             <controls1:HeroControl x:Name="_heroControl"/>
+            <controls1:TargetControl x:Name="_targetControl"/>
         </Canvas>
     </Grid>
 </UserControl>

@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using Kalavarda.Primitives.Units;
 using Kalavarda.Primitives.Units.Buffs;
 using Kalavarda.Primitives.Units.Fight;
 using Kalavarda.Primitives.Units.Interfaces;
@@ -10,10 +9,10 @@ namespace OpenWorld.Controls
 {
     public partial class TargetBar
     {
-        private Unit _target;
+        private ISelectable _target;
         private IFightController _fightController;
 
-        public Unit Target
+        public ISelectable Target
         {
             get => _target;
             set
@@ -25,7 +24,8 @@ namespace OpenWorld.Controls
                     hl.LevelChanged -= HasLevel_LevelChanged;
 
                 _target = value;
-                _hpControl.Range = _target?.HP;
+                if (_target is ICreature creature)
+                    _hpControl.Range = creature.HP;
 
                 if (_target is IHasLevel hasLevel)
                 {
